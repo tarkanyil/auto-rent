@@ -32,3 +32,18 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+# linters
+.eslintcache/
+.eslintrc
+.eslintrc.yaml
+.eslintrc.json
+.eslintrc.js
+.stylelintcache/
+.stylelintrc
+.stylelintrc.yaml
+.stylelintrc.json
+.stylelintrc.js
+
+#mymisc
+_notes.txt
