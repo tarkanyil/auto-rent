@@ -1,0 +1,19 @@
+@mixin tablet() {
+  @media screen and (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin desktop() {
+  @media screen and (min-width: 992px) {
+    @content;
+  }
+}
+
+@mixin primaryFont() {
+  font-family: 'Yeseva One', cursive;
+}
+
+@mixin secondaryFont() {
+  font-family: 'Roboto', sans-serif;
+}

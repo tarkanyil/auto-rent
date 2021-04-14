@@ -1,0 +1,26 @@
+@import 'mixins';
+
+.container {
+  min-height: 100vh;
+  padding: 0 0.5rem;
+  display: flex;
+  flex-direction: column;
+  // justify-content: center;
+  // align-items: center;
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  background-color: lightcyan;
+  width: clamp(200px, 50%, 600px);
+  @include tablet() {
+    background-color: lightcoral;
+  }
+
+}
+
+.element {
+  border: 1px solid black;
+}
+
