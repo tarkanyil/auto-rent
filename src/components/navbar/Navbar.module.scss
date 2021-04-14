@@ -1,0 +1,10 @@
+.flexParent > :not(:last-child) {
+  margin-right: 7px;
+  @media screen and (min-width: 450px) {
+    margin-right: 15px;
+  }
+}
+
+.flexParentDd > :not(:last-child) {
+    margin-bottom: 16px;
+  }

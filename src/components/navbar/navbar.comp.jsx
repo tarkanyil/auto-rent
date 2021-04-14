@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 
 import OutsideClickHandler from 'react-outside-click-handler';
+import styles from './Navbar.module.scss';
 
 import {
   Nav,
@@ -48,13 +49,13 @@ const Navbar = () => {
         <LogoIcon />
       </NavLink>
 
-      <NavMenu>
-        <CollapsableLinks>
-          <NavLink href='/'>Our cars</NavLink>
+      <NavMenu className={styles.flexParent}>
+        <CollapsableLinks className={styles.flexParent}>
+          <NavLink href='/' className={styles.flexItem}>Our cars</NavLink>
           <NavLink href='/'>How it works</NavLink>
         </CollapsableLinks>
         {!isLoggedIn && (
-          <LoginLinks>
+          <LoginLinks className={styles.flexParent}>
             <NavLink href='/'>Log In</NavLink>
             <NavLink href='/'>Sign Up</NavLink>
           </LoginLinks>
@@ -71,8 +72,8 @@ const Navbar = () => {
       {open && (
         <NavDropdownContainer>
           <OutsideClickHandler onOutsideClick={handleDropdownClick}>
-            <NavDropdown>
-              <ItemsFromMain>
+            <NavDropdown className={styles.flexParentDd}>
+              <ItemsFromMain className={styles.flexParentDd}>
                 <NavDropdownItem href='/' onClick={handleDropdownClick}>
                   Our cars
                 </NavDropdownItem>

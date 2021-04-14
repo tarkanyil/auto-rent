@@ -25,10 +25,6 @@ export const NavMenu = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 7px;
-  @media screen and (min-width: 450px) {
-    gap: 15px;
-  }
 `;
 
 export const CollapsableLinks = styled.div`
@@ -36,20 +32,12 @@ export const CollapsableLinks = styled.div`
   @media screen and (min-width: 374px) {
     display: flex;
     flex-direction: row;
-    gap: 7px;
-  }
-  @media screen and (min-width: 450px) {
-    gap: 15px;
   }
 `;
 
 export const LoginLinks = styled(CollapsableLinks)`
   display: flex;
   flex-direction: row;
-  gap: 7px;
-  @media screen and (min-width: 450px) {
-    gap: 15px;
-  }
 `;
 
 export const StyledLink = styled.a`
@@ -86,7 +74,6 @@ export const NavDropdownContainer = styled.div`
 export const NavDropdown = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 16px;
   align-items: flex-start;
   background-color: rgba(0, 0, 0, 0.1);
   width: 140px;
