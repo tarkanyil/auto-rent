@@ -1,6 +1,40 @@
+@import '../../../styles/mixins';
+
 .heroContainer {
     width: 100%;
+    height: 80vh;
+    max-height: 600px;
+    margin-top: 10px;
     background-image: url('/porsche_1.jpg');
     background-size: cover;
+    background-position: center top;
+    text-align: center;
+}
+
+.textContainer {
+    margin: 0 auto 0 auto;
+    // width: var(--width);
+    width: 100%;
+    height: 100%;
+    // @include tablet {
+    //     margin: 95px auto 0 auto;
+    // }
+    // max-width: 800px;
+    padding: 20px 25px 20px 25px;
+    background-color: rgba(255, 255, 255, 0.5);
+    // border-radius: 15px;
+}
+
+.textContainer > :first-child {
+    margin-bottom: 10px;
+}
+
+.textContainer > :not(:first-child) {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.textElement {
+    margin: 0;
 }
 

@@ -3,15 +3,17 @@ import styled from 'styled-components';
 
 export const Nav = styled.nav`
   height: 32px;
-  width: 100%;
-  margin: 32px auto 0 auto;
+  width: 92%;
+  margin: 15px auto 0 auto;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   z-index: 10;
   position: relative;
-  @media screen and (min-width: 767px) {
+  @media screen and (min-width: 768px) {
+    display: flex;
+    flex-direction: row;
   }
 `;
 

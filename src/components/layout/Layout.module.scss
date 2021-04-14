@@ -1,15 +1,7 @@
 @import '../../../styles/mixins';
 
 .container {
-    display: flex;
-    flex-direction: column;
-    width: 92%;
-    max-width: 940px;
-    margin: 0 auto;
-    @include tablet() {
-      width: 87%;
-    }
-    // @include desktop() {
-
-    // }
-  }
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
