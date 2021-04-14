@@ -51,7 +51,7 @@ export const StyledLink = styled.a`
   font-family: var(--secondary-font);
   font-style: normal;
   font-weight: 700;
-  font-size: 12px;
+  font-size: 13px;
   line-height: 14px;
   &.active {
     color: red;
