@@ -12,12 +12,7 @@
 //     width: 60%;
 // }
 
-.item {
-    margin-top: 15%;
-}
-
 .itemDate {
-    @extend item;
     width: 60%;
 }
 
@@ -30,5 +25,6 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin-top: 15px;
 }
 
