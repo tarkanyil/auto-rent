@@ -1,14 +1,23 @@
 // @import '../../../styles/mixins';
 
+// .item {
+//     margin-top: 15px;
+// }
+
+// .time {
+//     width: 35%;
+// }
+
+// .date {
+//     width: 60%;
+// }
+
 .item {
-    margin-top: 15px;
+    margin-top: 15%;
 }
 
-.time {
-    width: 35%;
-}
-
-.date {
+.itemDate {
+    @extend item;
     width: 60%;
 }
 

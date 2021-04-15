@@ -39,7 +39,8 @@ const InlineDatePickerDemo = (props) => {
       <MuiPickersUtilsProvider utils={DateFnsUtils} className={styles.mainContainer}>
         <div className={styles.start}>
           <KeyboardDatePicker
-            className={`${styles.item} ${styles.date}`}
+            // className={`${styles.item} ${styles.date}`}
+            className={styles.itemDate}
             autoOk
             variant='inline'
             inputVariant='outlined'
@@ -51,7 +52,7 @@ const InlineDatePickerDemo = (props) => {
           />
 
           <TextField
-            className={`${styles.item} ${styles.time}`}
+            className={styles.item}
             label=''
             value={selectedPickupTime}
             onChange={(date) => handleSelectedPickupTimeChange(date)}
@@ -69,7 +70,8 @@ const InlineDatePickerDemo = (props) => {
 
         <div className={styles.end}>
           <KeyboardDatePicker
-            className={`${styles.item} ${styles.date}`}
+            // className={`${styles.item} ${styles.date}`}
+            className={styles.itemDate}
             autoOk
             variant='inline'
             inputVariant='outlined'
@@ -81,7 +83,7 @@ const InlineDatePickerDemo = (props) => {
           />
 
           <TextField
-            className={`${styles.item} ${styles.time}`}
+            className={styles.item}
             label=''
             value={selectedDropoffTime}
             onChange={(date) => handleSelectedDropoffTimeChange(date)}
