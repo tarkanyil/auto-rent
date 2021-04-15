@@ -1,0 +1,25 @@
+.searchContainer {
+  display: flex;
+  flex-direction: column;
+  padding-top: 15px;
+}
+
+.fromDate {
+  background-color: lightcyan;
+}
+
+.untilDate {
+  background-color: lightcoral;
+}
+
+.buttonContainer {
+    background-color: lightcyan;
+  }
+
+.item {
+  width: var(--width);
+  height: 66px;
+  margin: 0 auto;
+}
+
+

@@ -21,7 +21,6 @@ import {
 import CloseIcon from '@material-ui/icons/Close';
 import LogoIcon from '@material-ui/icons/DriveEta';
 import AccountIcon from '@material-ui/icons/AccountCircleOutlined';
-import Button from '@material-ui/core/Button';
 
 // window is not defined error
 // import Spacer from '../_spacer/spacer.comp';
