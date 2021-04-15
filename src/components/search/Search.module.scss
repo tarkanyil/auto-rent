@@ -1,7 +1,11 @@
-.searchContainer {
+.container {
   display: flex;
   flex-direction: column;
-  padding-top: 15px;
+  margin-top: 55px;
+  width: 100%;
+  padding: 10px;
+  background-color: rgba(255,255,255,0.7);
+  border-radius: 5px;
 }
 
 .fromDate {
@@ -16,10 +20,10 @@
     background-color: lightcyan;
   }
 
-.item {
-  width: var(--width);
-  height: 66px;
-  margin: 0 auto;
-}
+// .item {
+//   width: var(--width);
+//   height: 66px;
+//   margin: 0 auto;
+// }
 
 

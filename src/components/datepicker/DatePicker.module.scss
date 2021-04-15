@@ -1,4 +1,25 @@
-.container {
-    background-color: white;
+// @import '../../../styles/mixins';
+
+.item {
+    margin-top: 15px;
+}
+
+.time {
+    width: 35%;
+}
+
+.date {
+    width: 60%;
+}
+
+.mainContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.start, .end {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 

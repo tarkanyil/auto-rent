@@ -1,55 +1,104 @@
-import * as React from 'react';
-import { withStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
-import AdapterDateFns from '@material-ui/lab/AdapterDateFns';
-import LocalizationProvider from '@material-ui/lab/LocalizationProvider';
-import Box from '@material-ui/core/Box';
-import MobileDateRangePicker from '@material-ui/lab/MobileDateRangePicker';
+import React, { useState } from 'react';
+import DateFnsUtils from '@date-io/date-fns';
+import {
+  DatePicker,
+  KeyboardDatePicker,
+  KeyboardTimePicker,
+  MuiPickersUtilsProvider
+} from '@material-ui/pickers';
+import {
+  createMuiTheme,
+  TextField,
+  InputAdornment,
+  IconButton
+} from '@material-ui/core';
+import { ThemeProvider } from '@material-ui/styles';
+import { indigo as primary } from '@material-ui/core/colors';
+import AccessTimeIcon from '@material-ui/icons/AccessTime';
 
 import styles from './DatePicker.module.scss';
 
-const DatePicker = () => {
-  const [value, setValue] = React.useState([null, null]);
+const myTheme = createMuiTheme({
+  palette: {
+    primary: primary
+  }
+});
 
-  const StyledInput = withStyles({
-    root: {
-      color: 'red'
-    }
-  })(TextField);
+const InlineDatePickerDemo = (props) => {
+  const [selectedStartDate, handleStartDateChange] = useState(new Date());
+  const [selectedEndDate, handleEndDateChange] = useState(new Date());
+  const [selectedPickupTime, handleSelectedPickupTimeChange] = useState(
+    '10:00'
+  );
+  const [selectedDropoffTime, handleSelectedDropoffTimeChange] = useState(
+    '11:00'
+  );
 
   return (
-    <div className={styles.container}>
-      <h1>Hello</h1>
-      <LocalizationProvider dateAdapter={AdapterDateFns}>
-        <MobileDateRangePicker
-          startText='Mobile start'
-          value={value}
-          onChange={(newValue) => {
-            setValue(newValue);
-          }}
-          renderInput={(startProps, endProps) => (
-            <React.Fragment>
-              {/* <StyledInput
-                {...startProps}
-                variant='filled'
-                label='LackoLabel'
+    <ThemeProvider theme={myTheme}>
+      <MuiPickersUtilsProvider utils={DateFnsUtils} className={styles.mainContainer}>
+        <div className={styles.start}>
+          <KeyboardDatePicker
+            className={`${styles.item} ${styles.date}`}
+            autoOk
+            variant='inline'
+            inputVariant='outlined'
+            label='From'
+            format='MM/dd/yyyy'
+            value={selectedStartDate}
+            InputAdornmentProps={{ position: 'end' }}
+            onChange={(date) => handleStartDateChange(date)}
+          />
 
-              /> */}
-              <TextField
-                {...startProps}
-                variant='outlined'
-                label='Start date'
-                className={styles.textField}
-                fullWidth
-              />
-              <Box sx={{ mx: 2 }}> </Box>
-              <TextField {...endProps} variant='outlined' label='End date' fullWidth />
-            </React.Fragment>
-          )}
-        />
-      </LocalizationProvider>
-    </div>
+          <TextField
+            className={`${styles.item} ${styles.time}`}
+            label=''
+            value={selectedPickupTime}
+            onChange={(date) => handleSelectedPickupTimeChange(date)}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position='end'>
+                  <IconButton>
+                    <AccessTimeIcon />
+                  </IconButton>
+                </InputAdornment>
+              )
+            }}
+          />
+        </div>
+
+        <div className={styles.end}>
+          <KeyboardDatePicker
+            className={`${styles.item} ${styles.date}`}
+            autoOk
+            variant='inline'
+            inputVariant='outlined'
+            label='Until'
+            format='MM/dd/yyyy'
+            value={selectedEndDate}
+            InputAdornmentProps={{ position: 'end' }}
+            onChange={(date) => handleEndDateChange(date)}
+          />
+
+          <TextField
+            className={`${styles.item} ${styles.time}`}
+            label=''
+            value={selectedDropoffTime}
+            onChange={(date) => handleSelectedDropoffTimeChange(date)}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position='end'>
+                  <IconButton>
+                    <AccessTimeIcon />
+                  </IconButton>
+                </InputAdornment>
+              )
+            }}
+          />
+        </div>
+      </MuiPickersUtilsProvider>
+    </ThemeProvider>
   );
 };
 
-export default DatePicker;
+export default InlineDatePickerDemo;
