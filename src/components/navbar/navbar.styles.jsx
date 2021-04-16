@@ -77,7 +77,8 @@ export const NavDropdown = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(255,255,255);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   width: 140px;
   /* height: 186px; */
   position: absolute;

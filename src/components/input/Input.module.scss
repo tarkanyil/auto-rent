@@ -1,0 +1,99 @@
+@import '../../../styles/mixins';
+
+.mainContainer {
+  position: relative;
+}
+
+.cont {
+  // background-color: lightgrey;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  color: var(--content-color);
+  @include tablet {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.unitCont {
+  @include tablet {
+    width: 45%;
+  }
+}
+
+.label {
+  text-align: left;
+  height: 35%;
+  padding: 0 15px;
+}
+
+.label p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.dateTimeCont {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.date,
+.time {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+  // border-bottom: 1px solid rgba(0,0,0,0.35);
+  background-color: rgba(0, 0, 0, 0.1);
+  box-shadow: rgba(0, 0, 0, 0.24) 2px 2px 8px;
+  border-radius: 5px;
+  margin-top: 5px;
+  cursor: pointer;
+}
+
+.date {
+  width: 58%;
+}
+
+.time {
+  width: 38%;
+}
+
+.cont > :last-child {
+  margin-top: 15px;
+  @include tablet {
+    margin-top: 0;
+  }
+}
+
+.arrowCont {
+  display: none;
+  @include tablet {
+    display: inline-block;
+    margin-top: 27px;
+  }
+}
+
+.calendar {
+  height: 100%;
+}
+
+.calendarCont {
+  position: absolute;
+  background-color: white;
+  border-radius: 5px;
+  left: 75px;
+  // width: 90%;
+  // max-width: 350px;
+  margin: 0 auto;
+  z-index: -2;
+}
+
+.calendarContEnd {
+  @extend .calendarCont;
+  top: 300px;
+}

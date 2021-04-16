@@ -13,18 +13,67 @@
 // }
 
 .itemDate {
-    width: 60%;
+  width: 55%;
+}
+
+.itemTime {
+  width: 40%;
+}
+
+.lala {
+  cursor: pointer !important;
 }
 
 .mainContainer {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
+  position: relative;
 }
 
-.start, .end {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-top: 15px;
+.start,
+.end {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 15px;
+  cursor: pointer !important;
+  padding: 5px;
+  background-color: grey;
 }
 
+.timeDropdown {
+  position: absolute;
+  z-index: 14;
+  right: 5px;
+  top: 5px;
+  width: 120px;
+  height: 200px;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  overflow-y: scroll;
+}
+
+.timeValue {
+  cursor: pointer;
+}
+
+.iconButton:focus {
+    outline: none;
+}
+
+.calendar {
+
+}
+
+.startDate, .endDate {
+    height: 55px;
+    width: 63%;
+    background-color: white;
+}
+
+.startTime, .endTime {
+    width: 35%;
+    background-color: white;
+}

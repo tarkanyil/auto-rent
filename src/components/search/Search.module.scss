@@ -1,11 +1,17 @@
+@import '../../../styles//mixins';
+
 .container {
   display: flex;
   flex-direction: column;
-  margin-top: 55px;
+  margin: 55px auto 0 auto;
   width: 100%;
+  max-width: 800px;
   padding: 10px;
   background-color: rgba(255,255,255,0.7);
   border-radius: 5px;
+  // @include tablet {
+  //   flex-direction: row;
+  // }
 }
 
 .fromDate {
@@ -17,13 +23,16 @@
 }
 
 .buttonContainer {
-    background-color: lightcyan;
+    margin-top: 15px;
+    // @include tablet {
+    //   margin-top: 0;
+    //   text-align: end;
+    // }
   }
 
-// .item {
-//   width: var(--width);
-//   height: 66px;
-//   margin: 0 auto;
-// }
+.button {
+  width: 100%;
+  border-radius: 5px;
+}
 
 
