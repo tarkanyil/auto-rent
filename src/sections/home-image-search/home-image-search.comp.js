@@ -11,6 +11,7 @@ const ImageSearch = () => (
         Book a classy time out with our premium fleet.
       </h2>
       <Search />
+      <div style={{ height: '150px' }}/>
     </div>
   </div>
 );
