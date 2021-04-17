@@ -1,0 +1,53 @@
+@import '../../../styles/mixins';
+
+.cardCont {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.card {
+  max-width: 25rem;
+  border-radius: 5px;
+  border: var(--border);
+  margin: 0 auto 2rem auto;
+  @include tablet {
+    margin: 0 auto 2rem auto;
+  }
+  @include large {
+    max-width: 30rem;
+    margin: 0 auto 2rem auto;
+  }
+}
+
+.description {
+  position: relative;
+}
+
+.image > img {
+  max-width: 100%;
+  width: 100%;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.description > * {
+  margin: 0;
+}
+
+.cardTitle {
+  padding: 1rem;
+}
+
+.cardDesc {
+  padding: 0 1rem 0.5rem 1rem;
+  text-align: right;
+}
+
+.button {
+  position: absolute;
+  top: -2rem;
+  width: 9rem;
+  left: 50%;
+  margin-left: -4.5rem;
+}

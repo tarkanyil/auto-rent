@@ -7,7 +7,6 @@ import DoubleArrowIcon from '@material-ui/icons/DoubleArrow';
 import DateFnsUtils from '@date-io/date-fns';
 import {
   MuiPickersUtilsProvider,
-  Calendar,
   DatePicker
 } from '@material-ui/pickers';
 import { createMuiTheme } from '@material-ui/core';

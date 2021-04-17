@@ -10,6 +10,12 @@
   }
 }
 
+@mixin large() {
+  @media screen and (min-width: 1200px) {
+    @content;
+  }
+}
+
 @mixin primaryFont() {
   font-family: 'Yeseva One', cursive;
 }

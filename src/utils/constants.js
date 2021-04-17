@@ -29,3 +29,24 @@ export const availableTimes = [
   '21:30',
   '22:00'
 ];
+
+export const carData = [
+  {
+    name: 'Tesla Model S Performance',
+    imgUrl:
+      'https://teslamag.de/wp-content/uploads/2019/09/Tesla-Model-S-Performance.jpg',
+    desc: 'Captivating description'
+  },
+  {
+    name: 'Tesla Model S',
+    imgUrl:
+      'https://teslamag.de/wp-content/uploads/2019/09/Tesla-Model-S-Performance.jpg',
+    desc: 'Captivating description'
+  },
+  {
+    name: 'Porsche 911 Cabrio',
+    imgUrl:
+      'https://teslamag.de/wp-content/uploads/2019/09/Tesla-Model-S-Performance.jpg',
+    desc: 'Captivating description'
+  }
+];

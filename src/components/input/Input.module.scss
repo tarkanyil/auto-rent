@@ -48,10 +48,8 @@
   align-items: center;
   justify-content: space-between;
   padding: 0 10px;
-  border: 1px solid rgba(0, 0, 0, 0.35);
+  border: var(--border);
   color: var(--test-color);
-  //   background-color: rgba(0, 0, 0, 0.1);
-  //   box-shadow: rgba(0, 0, 0, 0.24) 2px 2px 8px;
   border-radius: 5px;
   margin-top: 5px;
   cursor: pointer;
@@ -99,8 +97,6 @@
   border-radius: 5px;
   left: 55px;
   top: -5px;
-  // width: 90%;
-  // max-width: 350px;
   margin: 0 auto;
   z-index: -20;
 }
@@ -112,16 +108,20 @@
 }
 
 .timeDropdown {
-  position: absolute;
+  position: fixed;
   z-index: 14;
-  left: 5px;
-  top: 50px;
+top: 16rem; 
   width: 120px;
   height: 300px;
   background-color: white;
   border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   overflow-y: scroll;
+  @include tablet {
+    position: absolute;
+    left: 5px;
+    top: 50px;
+  }
 }
 
 .timeValue {

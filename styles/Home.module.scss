@@ -7,18 +7,17 @@
   flex-direction: column;
 }
 
-.box {
-  display: flex;
-  flex-direction: column;
-  background-color: lightcyan;
-  width: clamp(200px, 50%, 600px);
-  @include tablet() {
-    background-color: lightcoral;
-  }
-
-}
-
 .element {
   border: 1px solid black;
+}
+
+.limitWidth {
+  width: 92%;
+  margin: 0 auto;
+}
+
+.wide {
+  width: 100%;
+  background-color: lightgrey;
 }
 

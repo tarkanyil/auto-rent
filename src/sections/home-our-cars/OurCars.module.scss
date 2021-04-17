@@ -1,0 +1,14 @@
+@import '../../../styles/mixins';
+
+.title {
+    text-align: center;
+}
+
+.cardCont {
+    margin: 0 auto;
+    max-width: 85rem;
+    @include tablet {
+        display: flex;
+        flex-direction: row;
+    }
+}
