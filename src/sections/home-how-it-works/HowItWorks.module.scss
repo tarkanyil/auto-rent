@@ -1,3 +1,57 @@
+@import '../../../styles/mixins';
+
+.cont > * > * {
+  margin: 0;
+}
+
+.cont {
+  margin: 0 auto 1.4rem auto;
+  width: 100%;
+  text-align: center;
+}
+
 .title {
-    text-align: center;
+    margin-bottom: 1.8rem;
+}
+
+.items {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 14rem;
+  @include tablet {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 87%;
+    max-width: 50rem;
+    margin: 0 auto;
+  }
+}
+
+.items > :not(:first-child) {
+    @include tablet {
+        margin-left: 1.2rem;
+    }
+}
+
+.item {
+  text-align: center;
+  padding-bottom: 1.5rem;
+  width: 14rem;
+  min-width: 12rem;
+}
+
+.icon {
+  width: 51px;
+  height: 51px;
+  margin: 0;
+}
+
+.head {
+  margin-bottom: 0.5rem;
+}
+
+.desc {
+  margin: 0;
+  font-weight: 400;
 }

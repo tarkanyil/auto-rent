@@ -21,14 +21,14 @@ export default function Home() {
 
         <ImageSearch />
 
-        <div style={{ height: '30px' }}></div>
+        <div style={{ height: '20px' }}></div>
 
         <div className={styles.limitWidth}>
           <OurCars />
 
         </div>
 
-        <div>
+        <div className={styles.wide}>
           <div className={styles.limitWidth}>
             <HowItWorks />
           </div>
