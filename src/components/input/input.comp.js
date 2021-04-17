@@ -65,41 +65,15 @@ const Input = () => {
 
   return (
     <ThemeProvider theme={myTheme}>
-      <MuiPickersUtilsProvider
-        utils={DateFnsUtils}
-        className={styles.mainContainer}>
+      <MuiPickersUtilsProvider utils={DateFnsUtils}>
         {/* {!modalOpen && (
           <Modal> */}
-            <div className={styles.calendarCont}>
-              <DatePicker
-                autoOk
-                variant='inline'
-                open={isOpen}
-                onOpen={() => setIsOpen(true)}
-                onClose={() => setIsOpen(false)}
-                label='Open me from button'
-                format='MM/dd/yyyy'
-                value={selectedStartDate}
-                onChange={setStartDate}
-              />
-            </div>
-          {/* </Modal>
+
+        {/* </Modal>
         )} */}
 
         {/* <Modal> */}
-          <div className={styles.calendarContEnd}>
-            <DatePicker
-              autoOk
-              variant='inline'
-              open={isOpenEnd}
-              onOpen={() => setIsOpenEnd(true)}
-              onClose={() => setIsOpenEnd(false)}
-              label='Open me from button'
-              format='MM/dd/yyyy'
-              value={selectedEndDate}
-              onChange={setEndDate}
-            />
-          </div>
+
         {/* </Modal> */}
 
         {/* <Calendar
@@ -115,8 +89,22 @@ const Input = () => {
               <p>From</p>
             </div>
             <div className={styles.dateTimeCont}>
+              <div className={styles.calendarCont}>
+                <DatePicker
+                  disablePast
+                  autoOk={true}
+                  variant='inline'
+                  open={isOpen}
+                  onOpen={() => setIsOpen(true)}
+                  onClose={() => setIsOpen(false)}
+                  label='Open me from button'
+                  format='MM/dd/yyyy'
+                  value={selectedStartDate}
+                  onChange={setStartDate}
+                />
+              </div>
               <div className={styles.date} onClick={handleDateClick}>
-                <p>{`${month.start}/${day.start}/${year.start}`}</p>
+                <p>{`${month.start}/${day.start}/${year.start}`} </p>
                 <DateIcon />
               </div>
               <div className={styles.time}>
@@ -135,6 +123,20 @@ const Input = () => {
               <p>Until</p>
             </div>
             <div className={styles.dateTimeCont}>
+              <div className={styles.calendarContEnd}>
+                <DatePicker
+                  disablePast
+                  autoOk
+                  variant='inline'
+                  open={isOpenEnd}
+                  onOpen={() => setIsOpenEnd(true)}
+                  onClose={() => setIsOpenEnd(false)}
+                  label='Open me from button'
+                  format='MM/dd/yyyy'
+                  value={selectedEndDate}
+                  onChange={setEndDate}
+                />
+              </div>
               <div className={styles.date} onClick={() => setIsOpenEnd(true)}>
                 <p>{`${month.end}/${day.end}/${year.end}`}</p>
                 <DateIcon />

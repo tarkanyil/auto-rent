@@ -5,7 +5,6 @@
 }
 
 .cont {
-  // background-color: lightgrey;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -32,12 +31,14 @@
 .label p {
   margin: 0;
   font-size: 14px;
+  color: var(--test-color);
 }
 
 .dateTimeCont {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  position: relative;
 }
 
 .date,
@@ -47,16 +48,22 @@
   align-items: center;
   justify-content: space-between;
   padding: 0 10px;
-  // border-bottom: 1px solid rgba(0,0,0,0.35);
-  background-color: rgba(0, 0, 0, 0.1);
-  box-shadow: rgba(0, 0, 0, 0.24) 2px 2px 8px;
+  border: 1px solid rgba(0, 0, 0, 0.35);
+  color: var(--test-color);
+  //   background-color: rgba(0, 0, 0, 0.1);
+  //   box-shadow: rgba(0, 0, 0, 0.24) 2px 2px 8px;
   border-radius: 5px;
   margin-top: 5px;
   cursor: pointer;
 }
 
+.date p, .time p {
+    color: var(--test-color);
+}
+
 .date {
   width: 58%;
+  position: relative;
 }
 
 .time {
@@ -72,6 +79,7 @@
 
 .arrowCont {
   display: none;
+  color: var(--indigo);
   @include tablet {
     display: inline-block;
     margin-top: 27px;
@@ -84,16 +92,22 @@
 
 .calendarCont {
   position: absolute;
+  display: inline-block;
   background-color: white;
   border-radius: 5px;
-  left: 75px;
+  left: 55px;
+  top: -5px;
   // width: 90%;
   // max-width: 350px;
   margin: 0 auto;
-  z-index: -2;
+  z-index: -20;
 }
 
 .calendarContEnd {
   @extend .calendarCont;
-  top: 300px;
+  @include tablet {
+
+  }
 }
+
+

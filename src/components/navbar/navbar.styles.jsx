@@ -43,8 +43,7 @@ export const LoginLinks = styled(CollapsableLinks)`
 `;
 
 export const StyledLink = styled.a`
-  color: black;
-  opacity: 0.7;
+  color: var(--test-color);
   display: flex;
   align-items: center;
   text-decoration: none;
@@ -55,8 +54,8 @@ export const StyledLink = styled.a`
   font-weight: 700;
   font-size: 13px;
   line-height: 14px;
-  &.active {
-    color: red;
+  &:hover {
+    color: var(--indigo);
   }
 `;
 
