@@ -57,8 +57,9 @@
   cursor: pointer;
 }
 
-.date p, .time p {
-    color: var(--test-color);
+.date p,
+.time p {
+  color: var(--test-color);
 }
 
 .date {
@@ -66,8 +67,9 @@
   position: relative;
 }
 
-.time {
+.timeCont {
   width: 38%;
+  position: relative;
 }
 
 .cont > :last-child {
@@ -106,8 +108,32 @@
 .calendarContEnd {
   @extend .calendarCont;
   @include tablet {
-
   }
 }
 
+.timeDropdown {
+  position: absolute;
+  z-index: 14;
+  left: 5px;
+  top: 50px;
+  width: 120px;
+  height: 300px;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  overflow-y: scroll;
+}
 
+.timeValue {
+  cursor: pointer;
+  padding: 10px 0;
+  margin: 0 10px;
+  border-radius: 5px;
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.04);
+  }
+  &:active {
+    background-color: var(--indigo);
+    color: white;
+  }
+}

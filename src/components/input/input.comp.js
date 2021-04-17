@@ -14,9 +14,9 @@ import { createMuiTheme } from '@material-ui/core';
 import { ThemeProvider } from '@material-ui/styles';
 import { indigo as primary } from '@material-ui/core/colors';
 
-import { availableTimes } from '../../utils/constants';
+import TimeDropdown from '../input/dropdown/dropdown.comp';
 
-import Modal from '../modal/modal.comp';
+import { availableTimes } from '../../utils/constants';
 
 const myTheme = createMuiTheme({
   palette: {
@@ -29,11 +29,10 @@ const Input = () => {
   const [selectedEndDate, setEndDate] = useState(new Date());
   const [isOpen, setIsOpen] = useState(false);
   const [isOpenEnd, setIsOpenEnd] = useState(false);
-  const [modalOpen, setModalOpen] = useState(false);
   const [selectedPickupTime, setSelectedPickupTime] = useState('10:00');
   const [selectedDropoffTime, setSelectedDropoffTime] = useState('11:00');
-  const [fromOpen, setFromOpen] = useState(false);
-  const [untilOpen, setUntilOpen] = useState(false);
+  const [isFromOpen, setIsFromOpen] = useState(false);
+  const [isUntilOpen, setIsUntilOpen] = useState(false);
 
   const day = {
     start: selectedStartDate.getDate(),
@@ -48,41 +47,23 @@ const Input = () => {
     end: selectedStartDate.getFullYear()
   };
 
-  const handleDropdown = (source, time) => {
+  const handleDropdownSelection = (source, time) => {
     if (source === 'from') {
       setSelectedPickupTime(time);
-      setFromOpen(false);
+      setIsFromOpen(false);
     } else {
       setSelectedDropoffTime(time);
-      setUntilOpen(false);
+      setIsUntilOpen(false);
     }
   };
 
   const handleDateClick = () => {
     setIsOpen(true);
-    setModalOpen(true);
   };
 
   return (
     <ThemeProvider theme={myTheme}>
       <MuiPickersUtilsProvider utils={DateFnsUtils}>
-        {/* {!modalOpen && (
-          <Modal> */}
-
-        {/* </Modal>
-        )} */}
-
-        {/* <Modal> */}
-
-        {/* </Modal> */}
-
-        {/* <Calendar
-          date={selectedEndDate}
-          onChange={setEndDate}
-          disablePast
-          className={styles.calendar}
-        /> */}
-
         <div className={styles.cont}>
           <div className={styles.unitCont}>
             <div className={styles.label}>
@@ -107,9 +88,27 @@ const Input = () => {
                 <p>{`${month.start}/${day.start}/${year.start}`} </p>
                 <DateIcon />
               </div>
-              <div className={styles.time}>
-                <p>10:00</p>
-                <TimeIcon />
+
+              <div className={styles.timeCont}>
+                <div
+                  className={styles.time}
+                  onClick={() => setIsFromOpen(true)}>
+                  <p>{selectedPickupTime}</p>
+                  <TimeIcon />
+                </div>
+                {isFromOpen && (
+                  <div className={styles.timeDropdown}>
+                    {availableTimes.map((time) => {
+                      return (
+                        <p
+                          className={styles.timeValue}
+                          onClick={() => handleDropdownSelection('from', time)}>
+                          {time}
+                        </p>
+                      );
+                    })}
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -141,9 +140,29 @@ const Input = () => {
                 <p>{`${month.end}/${day.end}/${year.end}`}</p>
                 <DateIcon />
               </div>
-              <div className={styles.time}>
-                <p>10:00</p>
-                <TimeIcon />
+
+              <div className={styles.timeCont}>
+                <div
+                  className={styles.time}
+                  onClick={() => setIsUntilOpen(true)}>
+                  <p>{selectedDropoffTime}</p>
+                  <TimeIcon />
+                </div>
+                {isUntilOpen && (
+                  <div className={styles.timeDropdown}>
+                    {availableTimes.map((time) => {
+                      return (
+                        <p
+                          className={styles.timeValue}
+                          onClick={() =>
+                            handleDropdownSelection('until', time)
+                          }>
+                          {time}
+                        </p>
+                      );
+                    })}
+                  </div>
+                )}
               </div>
             </div>
           </div>
