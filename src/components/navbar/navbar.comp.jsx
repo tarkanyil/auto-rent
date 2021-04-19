@@ -45,13 +45,13 @@ const Navbar = () => {
   return (
     <Nav>
       <NavLink href='/'>
-        <LogoIcon />   XiCar
+        <LogoIcon /> XiCar
       </NavLink>
 
       <NavMenu className={styles.flexParent}>
         <CollapsableLinks className={styles.flexParent}>
           <NavLink href='/' className={styles.flexItem}>Our cars</NavLink>
-          <NavLink href='/'>How it works</NavLink>
+          <NavLink href='/'>About XiCar</NavLink>
         </CollapsableLinks>
         {!isLoggedIn && (
           <LoginLinks className={styles.flexParent}>
@@ -77,7 +77,7 @@ const Navbar = () => {
                   Our cars
                 </NavDropdownItem>
                 <NavDropdownItem href='/' onClick={handleDropdownClick}>
-                  How it works
+                  About XiCar
                 </NavDropdownItem>
               </ItemsFromMain>
               <NavDropdownItem href='/' onClick={handleDropdownClick}>

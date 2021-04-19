@@ -7,10 +7,10 @@ const Footer = () => {
     <div className='wide'>
       <div className={styles.container}>
         <div className={styles.menu}>
-          <Link href='/'>Impressum</Link>
-          <Link href='/'>Datenschutz</Link>
-          <Link href='/'>AGB</Link>
-          <Link href='/'>Sitemap</Link>
+          <Link href='/'><p>Impressum</p></Link>
+          <Link href='/'><p>Datenschutz</p></Link>
+          <Link href='/'><p>AGB</p></Link>
+          <Link href='/'><p>Sitemap</p></Link>
         </div>
         <p className={styles.copy}>
           &copy;{actualYear} XiCars | Made with{' '}
