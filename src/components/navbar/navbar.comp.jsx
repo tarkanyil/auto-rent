@@ -45,7 +45,7 @@ const Navbar = () => {
   return (
     <Nav>
       <NavLink href='/'>
-        <LogoIcon />
+        <LogoIcon />   XiCar
       </NavLink>
 
       <NavMenu className={styles.flexParent}>

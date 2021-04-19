@@ -5,7 +5,7 @@
 }
 
 .cont {
-  margin: 0 auto 1.4rem auto;
+  margin: 0 auto;
   width: 100%;
   text-align: center;
 }
@@ -30,7 +30,7 @@
 
 .items > :not(:first-child) {
     @include tablet {
-        margin-left: 1.2rem;
+        margin-left: 1.6rem;
     }
 }
 
@@ -39,20 +39,33 @@
   padding-bottom: 1.9rem;
   width: 14rem;
   min-width: 12rem;
+  @include tablet {
+    text-align: left;
+}
 }
 
 .icon {
-  width: 3.2rem;
-  height: 3.2rem;
+  width: 4em;
+  height: 4rem;
   margin: 0;
 }
 
+.iconCar {
+    width: 4rem;
+    height: 4rem;
+}
+
 .head {
-  margin-top: 0.1rem;
+  margin-top: 0.3rem;
   margin-bottom: 0.5rem;
 }
 
 .desc {
   margin: 0;
   font-weight: 400;
+}
+
+.logo {
+    color: red;
+    fill: red;
 }

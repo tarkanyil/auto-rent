@@ -31,7 +31,7 @@ export const NavMenu = styled.div`
 
 export const CollapsableLinks = styled.div`
   display: none;
-  @media screen and (min-width: 374px) {
+  @media screen and (min-width: 376px) {
     display: flex;
     flex-direction: row;
   }
@@ -52,7 +52,7 @@ export const StyledLink = styled.a`
   font-family: var(--secondary-font);
   font-style: normal;
   font-weight: 700;
-  font-size: 13px;
+  font-size: 0.8rem;
   line-height: 14px;
   &:hover {
     color: var(--indigo);
