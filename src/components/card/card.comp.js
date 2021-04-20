@@ -1,4 +1,5 @@
 import styles from './Card.module.scss';
+import Link from 'next/link';
 
 import Button from '@material-ui/core/Button';
 
@@ -16,9 +17,11 @@ const Card = () => {
               </div>
               <div className={styles.description}>
                 <div className={styles.buttonCont}>
-                  <Button className={styles.button} variant='contained'>
-                    Explore now!
-                  </Button>
+                  <Link href='/cars/car'>
+                    <Button className={styles.button} variant='contained'>
+                      Explore now!
+                    </Button>
+                  </Link>
                 </div>
                 <h3 className={styles.cardTitle}>{car.name}</h3>
                 <div className={styles.divider}></div>
