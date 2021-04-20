@@ -35,7 +35,10 @@
 
 .textElement {
     margin: 0;
-    font-size: 3.2rem;
+    font-size: 2.6rem;
     color: black;
+    @include tablet {
+        font-size: 3.2rem;
+    }
 }
 
