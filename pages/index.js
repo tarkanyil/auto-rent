@@ -24,21 +24,19 @@ export default function Home() {
 
         {/* <div style={{ height: '20px' }}></div> */}
 
-        <div className={styles.limitWidth}>
+        <div className='limitWidth'>
           <HowItWorks />
         </div>
 
-        <div className={styles.wide}>
-          <div className={styles.limitWidth}>
+        <div className='wide'>
+          <div className='limitWidth'>
             <OurCars />
           </div>{' '}
         </div>
 
-
-          <div className={styles.limitWidth}>
-            <About />
-          </div>
-
+        <div className='limitWidth'>
+          <About />
+        </div>
 
         {/* <div style={{ height: '150px' }}></div> */}
       </div>
