@@ -34,19 +34,20 @@ export const carData = [
   {
     name: 'Tesla Model S Performance',
     imgUrl:
-      'https://teslamag.de/wp-content/uploads/2019/09/Tesla-Model-S-Performance.jpg',
+      'https://images.unsplash.com/photo-1536700503339-1e4b06520771?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
     desc: 'Captivating description'
   },
   {
     name: 'Tesla Model S',
     imgUrl:
-      'https://teslamag.de/wp-content/uploads/2019/09/Tesla-Model-S-Performance.jpg',
+      'https://images.unsplash.com/photo-1541446654331-def41325e92c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
     desc: 'Captivating description'
   },
   {
     name: 'Porsche 911 Cabrio',
     imgUrl:
-      'https://teslamag.de/wp-content/uploads/2019/09/Tesla-Model-S-Performance.jpg',
+      'https://images.unsplash.com/photo-1526069824293-406685e85766?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
     desc: 'Captivating description'
   }
 ];
+

@@ -5,6 +5,8 @@ import styles from './Swiper1.module.scss';
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
+import { carData } from '../../utils/constants';
+
 SwiperCore.use([Navigation, Pagination]);
 
 const Swiper1 = () => {
@@ -16,17 +18,18 @@ const Swiper1 = () => {
         pagination={{ type: 'fraction' }}
         spaceBetween={0}
         slidesPerView={1}>
-        {Array.from(Array(5)).map((el, i) => {
+        {carData.map((car, i) => {
           return (
-            <SwiperSlide key={`slide-${i}`} style={{}}>
+            <SwiperSlide key={`slide-${i}`}>
               <img
                 className='slide'
-                src={`https://picsum.photos/id/${i + 1}/1440/700`}
-                alt={`Slide ${i}`}
+                src={car.imgUrl}
+                alt={`${car.name} image`}
               />
             </SwiperSlide>
           );
         })}
+        
       </Swiper>
     </div>
   );
