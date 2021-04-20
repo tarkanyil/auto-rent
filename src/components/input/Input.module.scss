@@ -9,6 +9,7 @@
   flex-direction: column;
   width: 100%;
   color: var(--content-color);
+
   @include tablet {
     flex-direction: row;
     justify-content: space-between;

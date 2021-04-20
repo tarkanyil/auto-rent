@@ -15,10 +15,13 @@ const Card = () => {
                 <img src={car.imgUrl} alt='car photo' srcset='' />
               </div>
               <div className={styles.description}>
-                <Button className={styles.button} variant='contained'>
-                  Explore now!
-                </Button>
+                <div className={styles.buttonCont}>
+                  <Button className={styles.button} variant='contained'>
+                    Explore now!
+                  </Button>
+                </div>
                 <h3 className={styles.cardTitle}>{car.name}</h3>
+                <div className={styles.divider}></div>
                 <p className={styles.cardDesc}>{car.desc}</p>
               </div>
             </div>

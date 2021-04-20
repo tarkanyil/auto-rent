@@ -1,5 +1,6 @@
 import styles from './Footer.module.scss';
-import Link from 'next/link';
+import { NavLink } from '../navbar/navbar.styles.jsx';
+
 
 const Footer = () => {
   const actualYear = new Date().getFullYear();
@@ -7,14 +8,14 @@ const Footer = () => {
     <div className='wide'>
       <div className={styles.container}>
         <div className={styles.menu}>
-          <Link href='/'><p className={styles.menuItem}>Impressum</p></Link>
-          <Link href='/'><p className={styles.menuItem}>Datenschutz</p></Link>
-          <Link href='/'><p className={styles.menuItem}>AGB</p></Link>
-          <Link href='/'><p className={styles.menuItem}>Sitemap</p></Link>
+          <NavLink href='/' className={styles.menuItem}>Impressum</NavLink>
+          <NavLink href='/' className={styles.menuItem}>Datenschutz</NavLink>
+          <NavLink href='/' className={styles.menuItem}>AGB</NavLink>
+          <NavLink href='/' className={styles.menuItem}>Sitemap</NavLink>
         </div>
         <p className={styles.copy}>
           &copy;{actualYear} XiCars | Made with{' '}
-          <span className={styles.heart}>&#10084;</span> by #laszlodev
+          <span className={styles.heart}>&#10084;</span> by <a href='#'>#laszlodev</a>
         </p>
       </div>
     </div>

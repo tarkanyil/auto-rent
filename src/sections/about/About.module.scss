@@ -10,7 +10,7 @@
 }
 
 .cont > :first-child {
-  text-align: center;
+    text-align: center;
 }
 
 .title {
@@ -33,9 +33,9 @@
 }
 
 .items > :not(:first-child) {
-    @include tablet {
-        margin-left: 1.6rem;
-    }
+  @include tablet {
+    margin-left: 1.6rem;
+  }
 }
 
 .item {
@@ -59,8 +59,8 @@
 }
 
 .iconCar {
-    width: 4rem;
-    height: 4rem;
+  width: 4rem;
+  height: 4rem;
 }
 
 .head {
@@ -75,6 +75,6 @@
 }
 
 .logo {
-    color: red;
-    fill: red;
+  color: red;
+  fill: red;
 }

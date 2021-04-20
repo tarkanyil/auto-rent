@@ -9,6 +9,7 @@ import Layout from '../src/components/layout/layout.comp';
 import ImageSearch from '../src/sections/home-image-search/home-image-search.comp';
 import OurCars from '../src/sections/home-our-cars/our-cars.comp';
 import HowItWorks from '../src/sections/home-how-it-works/how-it-works.comp';
+import About from '../src/sections/about/about.comp';
 
 export default function Home() {
   return (
@@ -21,21 +22,25 @@ export default function Home() {
 
         <ImageSearch />
 
-        <div style={{ height: '20px' }}></div>
+        {/* <div style={{ height: '20px' }}></div> */}
 
         <div className={styles.limitWidth}>
-          <OurCars />
-
+          <HowItWorks />
         </div>
 
         <div className={styles.wide}>
           <div className={styles.limitWidth}>
-            <HowItWorks />
-          </div>
+            <OurCars />
+          </div>{' '}
         </div>
 
-        <div style={{ height: '150px' }}></div>
 
+          <div className={styles.limitWidth}>
+            <About />
+          </div>
+
+
+        {/* <div style={{ height: '150px' }}></div> */}
       </div>
     </Layout>
   );
