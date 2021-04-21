@@ -9,7 +9,7 @@ import { carData } from '../../utils/constants';
 
 SwiperCore.use([Navigation, Pagination]);
 
-const Swiper1 = () => {
+const Swiper1 = ({ source }) => {
   return (
     <div className={styles.container}>
       <Swiper
@@ -18,13 +18,13 @@ const Swiper1 = () => {
         pagination={{ type: 'fraction' }}
         spaceBetween={0}
         slidesPerView={1}>
-        {carData.map((car, i) => {
+        {source.map((item, idx) => {
           return (
-            <SwiperSlide key={`slide-${i}`}>
+            <SwiperSlide key={`slide-${idx}`}>
               <img
                 className='slide'
-                src={car.imgUrl}
-                alt={`${car.name} image`}
+                src={item.imgUrl}
+                alt={`${item.name} image`}
               />
             </SwiperSlide>
           );

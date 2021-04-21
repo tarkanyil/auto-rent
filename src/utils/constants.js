@@ -32,18 +32,21 @@ export const availableTimes = [
 
 export const carData = [
   {
+    id: 'tesla-model-s-performance',
     name: 'Tesla Model S Performance',
     imgUrl:
       'https://images.unsplash.com/photo-1536700503339-1e4b06520771?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
     desc: 'Captivating description'
   },
   {
+    id: 'tesla-model-s',
     name: 'Tesla Model S',
     imgUrl:
       'https://images.unsplash.com/photo-1541446654331-def41325e92c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
     desc: 'Captivating description'
   },
   {
+    id: 'porsche-911-cabrio',
     name: 'Porsche 911 Cabrio',
     imgUrl:
       'https://images.unsplash.com/photo-1526069824293-406685e85766?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',

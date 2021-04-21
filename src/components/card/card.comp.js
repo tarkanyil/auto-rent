@@ -8,16 +8,16 @@ import { carData } from '../../utils/constants';
 const Card = () => {
   return (
     <div className={styles.cardCont}>
-      {carData.map((car) => {
+      {carData.map((car, idx) => {
         return (
           <>
-            <div className={styles.card}>
+            <div className={styles.card} key={idx}>
               <div className={styles.image}>
                 <img src={car.imgUrl} alt='car photo' srcset='' />
               </div>
               <div className={styles.description}>
                 <div className={styles.buttonCont}>
-                  <Link href='/cars/car'>
+                  <Link href={`/cars/${car.id}`}>
                     <Button className={styles.button} variant='contained'>
                       Explore now!
                     </Button>
