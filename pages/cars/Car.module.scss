@@ -38,9 +38,9 @@
 }
 
 .button {
-  margin: 0;
-  padding: 0.5rem 1rem;
-  text-transform: none;
+  margin: 0 !important;
+  padding: 0.5rem 1rem !important;
+  text-transform: none !important;
 }
 
 .distance {
@@ -93,24 +93,24 @@
 }
 
 .moreButton {
-  padding: 0.15rem 1rem;
-  font-size: 0.75rem;
-  text-transform: none;
-  border-radius: 0;
-  border-color: var(--content-color);
-  color: var(--content-color);
-  margin-top: 0.5rem;
-  width: 6.125rem;
+  padding: 0.15rem 1rem !important;
+  font-size: 0.75rem !important;
+  text-transform: none !important;
+  border-radius: 0 !important;
+  border-color: var(--content-color) !important;
+  color: var(--content-color) !important;
+  margin-top: 0.5rem !important;
+  width: 6.125rem !important;
   &:hover {
-    border-color: var(--content-color);
+    border-color: var(--content-color) !important;
   }
 }
 
 .favoritesButton {
   @extend .moreButton;
-  font-size: 1rem;
-  width: 100%;
-  margin: 1rem 0;
+  font-size: 1rem !important;
+  width: 100% !important;
+  margin: 1rem 0 !important;
 }
 
 .featCont {
