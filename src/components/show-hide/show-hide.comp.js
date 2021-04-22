@@ -1,10 +1,14 @@
+// This component serves as a container to shrink the content
+//to a given maximum height, giving option to show more or less with button control.
+//height can be added to large (l/L) or small (s/S)
+
 import { useState } from 'react';
 
-import styles from './ShwoHide.module.scss';
+import styles from './ShowHide.module.scss';
 
 import Button from '@material-ui/core/Button';
 
-const ShowHide = ({ children }) => {
+const ShowHide = ({ height, children }) => {
   const [btnText, setBtnText] = useState('Show more');
   const [isFull, setIsFull] = useState(false);
 
@@ -13,11 +17,13 @@ const ShowHide = ({ children }) => {
     isFull ? setBtnText('Show more') : setBtnText('Show less');
   };
 
-  const maxHeight = '6rem';
-
   let showHideCont = styles.showHideCont;
   if (!isFull) {
-    showHideCont = `${styles.showHideCont} ${styles.shrink}`;
+    if (height.toLowerCase() === 'l') {
+      showHideCont = `${styles.showHideCont} ${styles.shrinkL}`;
+    } else {
+      showHideCont = `${styles.showHideCont} ${styles.shrinkS}`;
+    }
   }
 
   return (

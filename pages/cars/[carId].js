@@ -10,6 +10,7 @@ import Divider from '@material-ui/core/Divider';
 import Head from 'next/head';
 import Layout from '../../src/components/layout/layout.comp';
 import ShowHide from '../../src/components/show-hide/show-hide.comp';
+import Input from '../../src/components/input/input.comp';
 
 import { carData } from '../../src/utils/constants';
 
@@ -40,30 +41,26 @@ const Car = ({ model, id, imgUrl, parameter }) => {
   const extras = [
     {
       title: 'Extra 1',
-      desc: 'Extra 1 description. Lorem ipsum dolor sit, amet consectetur adipisicing.',
+      desc:
+        'Extra 1 description. Lorem ipsum dolor sit, amet consectetur adipisicing.',
       price: 20,
       pricePer: 'trip'
     },
     {
       title: 'Extra 2',
-      desc: 'Extra 2 description. Lorem ipsum dolor sit, amet consectetur adipisicing.',
+      desc:
+        'Extra 2 description. Lorem ipsum dolor sit, amet consectetur adipisicing.',
       price: 15,
       pricePer: 'day'
     },
     {
       title: 'Extra 3',
-      desc: 'Extra 3 description. Lorem ipsum dolor sit, amet consectetur adipisicing.',
+      desc:
+        'Extra 3 description. Lorem ipsum dolor sit, amet consectetur adipisicing.',
       price: 25,
       pricePer: 'day'
     }
   ];
-
-  
-
-  let showHide = styles.showHideCont;
-  if (!isDescFull) {
-    showHide = `${styles.showHideCont} ${styles.shrink}`;
-  }
 
   return (
     <Layout suppressHydrationWarning={true}>
@@ -77,14 +74,12 @@ const Car = ({ model, id, imgUrl, parameter }) => {
         </div>
         <div className='limitWidth'>
           <h1>{model}</h1>
-          <br />
-          Trip start
-          <br />
-          Trip end
-          <br />
-          x+ day discount
-          <br />
-          <br />
+          <h3 className={styles.subtitle}>Cabriolet</h3>
+          <section className={styles.dateTimeCont}>
+            <Input />
+          </section>
+          {/* <br />
+          x+ day discount */}
           <Divider />
           <div className={styles.distance}>
             <div className={styles.leftSide}>
@@ -118,14 +113,14 @@ const Car = ({ model, id, imgUrl, parameter }) => {
           <section className={styles.aboutCar}>
             <div className={styles.aboutCont}>
               <h3 className={styles.aboutTitle}>Description</h3>
-              <ShowHide>
+              <ShowHide height='L'>
                 <p className={styles.sectionBig}>{description}</p>
               </ShowHide>
             </div>
 
             <div className={styles.featCont}>
               <h3 className={styles.aboutTitle}>Features</h3>
-              <ShowHide>
+              <ShowHide height='s'>
                 <div className={styles.featItems}>
                   {features.map((feature, idx) => (
                     <p key={idx} className={styles.featItem}>
@@ -139,35 +134,34 @@ const Car = ({ model, id, imgUrl, parameter }) => {
 
             <div className={styles.extrasCont}>
               <h3 className={styles.aboutTitle}>Extras ({extras.length})</h3>
-              <ShowHide>
-              <p className={styles.sectionBig}>
-                Add optional Extras to your trip at checkout.
-              </p>
-              <div className={styles.extraItems}>
-                {extras.map((extra, idx) => (
-                  <div className={styles.extraItemCont}>
-                    <h3 className={styles.extraTitle}>{extra.title}</h3>
-                    <p className={styles.extraDesc}>{extra.desc}</p>
-                    <p className={styles.extraPrice}>
-                      &euro;{extra.price}/{extra.pricePer}
-                    </p>
-                    {idx != extras.length - 1 && (
-                      <Divider className={styles.divider} />
-                    )}
-                  </div>
-                ))}
-              </div>
+              <ShowHide height='s'>
+                <p className={styles.sectionBig}>
+                  Add optional Extras to your trip at checkout.
+                </p>
+                <div className={styles.extraItems}>
+                  {extras.map((extra, idx) => (
+                    <div className={styles.extraItemCont}>
+                      <h3 className={styles.extraTitle}>{extra.title}</h3>
+                      <p className={styles.extraDesc}>{extra.desc}</p>
+                      <p className={styles.extraPrice}>
+                        &euro;{extra.price}/{extra.pricePer}
+                      </p>
+                      {idx != extras.length - 1 && (
+                        <Divider className={styles.divider} />
+                      )}
+                    </div>
+                  ))}
+                </div>
               </ShowHide>
             </div>
 
             <div className={styles.aboutCont}>
               <h3 className={styles.aboutTitle}>Guidelines</h3>
-              <ShowHide>
+              <ShowHide height='s'>
                 <p className={styles.sectionBig}>{description}</p>
               </ShowHide>
             </div>
           </section>
-          
           <Button className={styles.favoritesButton} variant='outlined'>
             <HeartIcon className={styles.heartIcon} /> Add to favorites
           </Button>

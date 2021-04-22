@@ -13,7 +13,7 @@
 }
 
 .showHideCont {
-    position: relative;
+  position: relative;
 }
 
 .showHideFade {
@@ -27,7 +27,12 @@
     linear-gradient(0deg, white, rgba(255, 255, 255, 0)) repeat scroll 0% 0%;
 }
 
-.shrink {
-    max-height: 6rem;
-    overflow: hidden;
+.shrinkS {
+  max-height: 6rem;
+  overflow: hidden;
+}
+
+.shrinkL {
+  max-height: 8.5rem;
+  overflow: hidden;
 }
