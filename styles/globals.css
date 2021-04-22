@@ -34,10 +34,15 @@ h2,
 h3,
 p {
   color: var(--content-color);
+  margin: 0;
 }
 
 h1 {
   font-family: 'Yeseva One', cursive;
+}
+
+h3 {
+  font-size: 1rem;
 }
 
 a {

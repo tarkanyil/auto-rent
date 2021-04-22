@@ -36,7 +36,20 @@ export const carData = [
     name: 'Tesla Model S Performance',
     imgUrl:
       'https://images.unsplash.com/photo-1536700503339-1e4b06520771?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
-    desc: 'Captivating description'
+    desc: 'Captivating description',
+    featuresPreview: {
+      fuelConsumption: 'n/a',
+      fuelType: 'Electric',
+      doors: 4,
+      seats: 5
+    },
+    description: 'This is the long description of the selected vehicle.',
+    features: {
+      ageLimit: 100,
+      automatic: true,
+      allWheelDrive: true,
+      backupCam: true
+    }
   },
   {
     id: 'tesla-model-s',
@@ -54,3 +67,4 @@ export const carData = [
   }
 ];
 
+export const carFeatures = {};

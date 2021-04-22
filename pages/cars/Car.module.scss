@@ -1,31 +1,197 @@
 .floatingCard {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 1.5rem;
-    position: fixed;
-    width: 90%;
-    height: 5rem;
-    bottom: 0.2rem;
-    background-color: white;
-    z-index: 10;
-    border-radius: 5px;
-    border: 1px solid var(--c-border);
-    box-shadow: 0 4px 8px rgb(35 31 32 / 15%), 0 0 2px rgb(35 31 32 / 5%);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1.5rem;
+  position: fixed;
+  width: 95%;
+  height: 4rem;
+  bottom: 0.2rem;
+  left: 2.5%;
+  background-color: white;
+  z-index: 10;
+  border-radius: 5px;
+  border: 1px solid #e7e7e8;
+  box-shadow: 0 4px 8px rgb(35 31 32 / 15%), 0 0 2px rgb(35 31 32 / 5%);
 }
 
 .leftSide {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .leftSide > * {
-    padding: 0;
-    margin: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.perDay {
+  font-size: 1.2 rem;
+}
+
+.totalCost {
+  font-size: 0.8rem;
+  text-decoration: underline;
+  font-weight: 400;
+  cursor: pointer;
 }
 
 .button {
-    margin: 0;
-    padding: 0.5rem 1rem !important;
+  margin: 0;
+  padding: 0.5rem 1rem;
+  text-transform: none;
+}
+
+.distance {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+}
+
+.sectionBig {
+  font-weight: 400;
+  line-height: 1.4rem;
+}
+
+.sectionSmall {
+  font-weight: 500;
+  font-size: 0.8rem;
+  margin-top: 0.3rem;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.featPrev {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 1rem 0 0.55rem;
+}
+
+.featPrevItem {
+  width: 50%;
+  font-weight: 400;
+  text-align: left;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  margin-bottom: 0.45rem;
+}
+
+.featPrevIcon {
+  margin-right: 0.25rem;
+}
+
+.aboutCont {
+  padding-bottom: 1.3rem;
+}
+
+.aboutTitle {
+  margin-bottom: 0.5rem;
+}
+
+.moreButton {
+  padding: 0.15rem 1rem;
+  font-size: 0.75rem;
+  text-transform: none;
+  border-radius: 0;
+  border-color: var(--content-color);
+  color: var(--content-color);
+  margin-top: 0.5rem;
+  width: 6.125rem;
+  &:hover {
+    border-color: var(--content-color);
+  }
+}
+
+.favoritesButton {
+  @extend .moreButton;
+  font-size: 1rem;
+  width: 100%;
+  margin: 1rem 0;
+}
+
+.featCont {
+  @extend .aboutCont;
+}
+
+.featItem {
+  @extend .featPrevItem;
+  margin-bottom: 0;
+}
+
+.featItems > :not(:last-child) {
+  margin-bottom: 0.45rem;
+}
+
+.extrasCont {
+  @extend .aboutCont;
+}
+
+.extraItemCont {
+  @extend .aboutCont;
+  padding-bottom: 0;
+}
+
+.extraItemCont > .divider {
+  margin-top: 0.6rem;
+}
+
+.extraItems > :not(:last-child) {
+  margin-bottom: 0.8rem;
+}
+
+.extraTitle {
+  @extend .aboutTitle;
+  margin-bottom: 0.4rem;
+  margin-top: 0.6rem;
+  font-style: italic;
+}
+
+.extraDesc {
+  @extend .sectionBig;
+  margin-bottom: 0.4rem;
+}
+
+.extraPrice {
+  font-weight: 500;
+  margin-top: 0.3rem;
+}
+
+.heartIcon {
+  height: 1.2rem;
+  margin-right: 0.2rem;
+}
+
+.cancel {
+  color: var(--indigo);
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-align: center;
+  padding-top: 1rem;
+}
+
+//HideShow
+.showHideCont {
+    position: relative;
+}
+
+.showHideFade {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  margin: 0px;
+  height: 4em;
+  background: rgba(0, 0, 0, 0)
+    linear-gradient(0deg, white, rgba(255, 255, 255, 0)) repeat scroll 0% 0%;
+}
+
+.shrink {
+    max-height: 6rem;
+    overflow: hidden;
 }
