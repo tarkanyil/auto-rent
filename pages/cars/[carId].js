@@ -5,12 +5,11 @@ import Link from 'next/link';
 import Button from '@material-ui/core/Button';
 import HeartIcon from '@material-ui/icons/FavoriteBorder';
 import PlaceholderIcon from '@material-ui/icons/AssignmentTurnedIn';
-import Icon from '@material-ui/core/Icon';
+import Divider from '@material-ui/core/Divider';
 
 import Head from 'next/head';
 import Layout from '../../src/components/layout/layout.comp';
-
-import Divider from '@material-ui/core/Divider';
+import ShowHide from '../../src/components/show-hide/show-hide.comp';
 
 import { carData } from '../../src/utils/constants';
 
@@ -19,8 +18,9 @@ import Swiper from '../../src/components/swiper/swiper.comp';
 // Section imports
 
 const Car = ({ model, id, imgUrl, parameter }) => {
+  const showBtnText = 'Show more';
   const [isDescFull, setIsDescFull] = useState(false);
-  const [descBtn, setDescBtn] = useState('Show more');
+  const [descBtn, setDescBtn] = useState(showBtnText);
 
   const distanceFee = 0.5;
   const kmIncluded = 300;
@@ -30,32 +30,35 @@ const Car = ({ model, id, imgUrl, parameter }) => {
   const fuelType = 'Electric';
   const description =
     'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid doloribus, quibusdam optio accusamus minima vero sit magnam beatae ducimus ratione natus molestias? Aut suscipit, porro ullam cupiditate eligendi sapiente dignissimos aliquam dolores distinctio autem laborum, vitae odio pariatur a atque.';
-  const features = ['Feature 1', 'Feature 2', 'Feature 3'];
+  const features = [
+    'Feature 1',
+    'Feature 2',
+    'Feature 3',
+    'Feature 4',
+    'Feature 5'
+  ];
   const extras = [
     {
       title: 'Extra 1',
-      desc: 'Extra 1 description',
+      desc: 'Extra 1 description. Lorem ipsum dolor sit, amet consectetur adipisicing.',
       price: 20,
       pricePer: 'trip'
     },
     {
       title: 'Extra 2',
-      desc: 'Extra 2 description',
+      desc: 'Extra 2 description. Lorem ipsum dolor sit, amet consectetur adipisicing.',
       price: 15,
       pricePer: 'day'
     },
     {
       title: 'Extra 3',
-      desc: 'Extra 3 description',
+      desc: 'Extra 3 description. Lorem ipsum dolor sit, amet consectetur adipisicing.',
       price: 25,
       pricePer: 'day'
     }
   ];
 
-  const handleShowMore = () => {
-    setIsDescFull(!isDescFull);
-    isDescFull ? setDescBtn('Show more') : setDescBtn('Show less');
-  };
+  
 
   let showHide = styles.showHideCont;
   if (!isDescFull) {
@@ -115,35 +118,28 @@ const Car = ({ model, id, imgUrl, parameter }) => {
           <section className={styles.aboutCar}>
             <div className={styles.aboutCont}>
               <h3 className={styles.aboutTitle}>Description</h3>
-              <div className={showHide}>
+              <ShowHide>
                 <p className={styles.sectionBig}>{description}</p>
-                {!isDescFull && <div className={styles.showHideFade} />}
-              </div>
-              <Button
-                className={styles.moreButton}
-                variant='outlined'
-                onClick={handleShowMore}>
-                {descBtn}
-              </Button>
+              </ShowHide>
             </div>
 
             <div className={styles.featCont}>
               <h3 className={styles.aboutTitle}>Features</h3>
-              <div className={styles.featItems}>
-                {features.map((feature, idx) => (
-                  <p key={idx} className={styles.featItem}>
-                    <PlaceholderIcon className={styles.featPrevIcon} />
-                    {feature}
-                  </p>
-                ))}
-              </div>
-              <Button className={styles.moreButton} variant='outlined'>
-                Show more
-              </Button>
+              <ShowHide>
+                <div className={styles.featItems}>
+                  {features.map((feature, idx) => (
+                    <p key={idx} className={styles.featItem}>
+                      <PlaceholderIcon className={styles.featPrevIcon} />
+                      {feature}
+                    </p>
+                  ))}
+                </div>
+              </ShowHide>
             </div>
 
             <div className={styles.extrasCont}>
-              <h3 className={styles.aboutTitle}>Extras</h3>
+              <h3 className={styles.aboutTitle}>Extras ({extras.length})</h3>
+              <ShowHide>
               <p className={styles.sectionBig}>
                 Add optional Extras to your trip at checkout.
               </p>
@@ -161,20 +157,17 @@ const Car = ({ model, id, imgUrl, parameter }) => {
                   </div>
                 ))}
               </div>
-
-              <Button className={styles.moreButton} variant='outlined'>
-                Show more
-              </Button>
+              </ShowHide>
             </div>
 
             <div className={styles.aboutCont}>
               <h3 className={styles.aboutTitle}>Guidelines</h3>
-              <p className={styles.sectionBig}>{description}</p>
-              <Button className={styles.moreButton} variant='outlined'>
-                Show more
-              </Button>
+              <ShowHide>
+                <p className={styles.sectionBig}>{description}</p>
+              </ShowHide>
             </div>
           </section>
+          
           <Button className={styles.favoritesButton} variant='outlined'>
             <HeartIcon className={styles.heartIcon} /> Add to favorites
           </Button>

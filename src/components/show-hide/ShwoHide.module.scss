@@ -1,0 +1,33 @@
+.moreButton {
+  padding: 0.15rem 1rem !important;
+  font-size: 0.75rem !important;
+  text-transform: none !important;
+  border-radius: 0 !important;
+  border-color: var(--content-color) !important;
+  color: var(--content-color) !important;
+  margin-top: 0.5rem !important;
+  width: 6.125rem !important;
+  &:hover {
+    border-color: var(--content-color) !important;
+  }
+}
+
+.showHideCont {
+    position: relative;
+}
+
+.showHideFade {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  margin: 0px;
+  height: 4em;
+  background: rgba(0, 0, 0, 0)
+    linear-gradient(0deg, white, rgba(255, 255, 255, 0)) repeat scroll 0% 0%;
+}
+
+.shrink {
+    max-height: 6rem;
+    overflow: hidden;
+}
