@@ -1,3 +1,5 @@
+@import '../../styles/mixins';
+
 .floatingCard {
   display: flex;
   flex-direction: row;
@@ -14,11 +16,17 @@
   border-radius: 5px;
   border: 1px solid #e7e7e8;
   box-shadow: 0 4px 8px rgb(35 31 32 / 15%), 0 0 2px rgb(35 31 32 / 5%);
+  @include desktop {
+    display: none;
+  }
 }
 
 .leftSide {
   display: flex;
   flex-direction: column;
+  @include desktop {
+    margin-bottom: 1rem;
+  }
 }
 
 .leftSide > * {
@@ -27,7 +35,10 @@
 }
 
 .perDay {
-  font-size: 1.2 rem;
+  font-size: 1.2rem;
+  @include desktop {
+    font-size: 1.6rem;
+  }
 }
 
 .totalCost {
@@ -37,10 +48,25 @@
   cursor: pointer;
 }
 
-.button {
+.contButton {
   margin: 0 !important;
   padding: 0.5rem 1rem !important;
   text-transform: none !important;
+}
+
+.contButtonDesktop {
+  @extend .contButton;
+  display: none;
+  @include desktop {
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 1rem !important;
+  }
+}
+
+.desktopRightSide {
+  display: flex;
+  flex-direction: column;
 }
 
 .distance {
@@ -86,10 +112,29 @@
 
 .aboutCont {
   padding-bottom: 1.3rem;
+  @include desktop {
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+.showHide {
+  width: 80%;
 }
 
 .aboutTitle {
   margin-bottom: 0.5rem;
+  @include desktop {
+    width: 20%;
+    text-align: right;
+    padding-right: 1rem;
+  }
+
+}
+
+.infoBoxTopDesktop {
+  margin-left: 20%;
+  margin-bottom: 2rem;
 }
 
 .favoritesButton {
@@ -129,8 +174,12 @@
   padding-bottom: 0;
 }
 
-.extraItemCont > .divider {
+.extraItemCont > .divider, .Desktop > .divider {
   margin-top: 0.6rem;
+}
+
+.Desktop > .divider {
+  margin-bottom: 0.8rem;
 }
 
 .extraItems > :not(:last-child) {
@@ -174,10 +223,47 @@
   position: relative;
   background-color: white;
   padding: 1.3rem 0;
+  @include desktop {
+    padding-top: 0;
+  }
 }
 
 .subtitle {
   margin-top: 0.2rem;
   opacity: 0.7;
+}
+
+.infoFavLinksBox {
+  display: flex;
+  flex-direction: column;
+  @include tablet {
+    flex-direction: row;
+  }
+}
+
+.infoBox {
+  @include tablet {
+    width: 60%;
+  }
+}
+
+.layoutRightSide {
+  @include tablet {
+    width: 40%;
+    margin-left: 2rem;
+  }
+}
+
+.mobTab {
+  @include desktop {
+    display: none;
+  }
+}
+
+.Desktop {
+  display: none;
+  @include desktop {
+    display: block;
+  }
 }
 

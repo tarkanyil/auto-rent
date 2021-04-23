@@ -9,7 +9,10 @@
   flex-direction: column;
   width: 100%;
   color: var(--content-color);
+}
 
+.contWide {
+  @extend .cont;
   @include tablet {
     flex-direction: row;
     justify-content: space-between;
@@ -18,6 +21,9 @@
 }
 
 .unitCont {
+}
+
+.unitContWide {
   @include tablet {
     width: 45%;
   }
@@ -74,14 +80,20 @@
 
 .cont > :last-child {
   margin-top: 15px;
+}
+
+.contWide > :last-child {
   @include tablet {
     margin-top: 0;
   }
 }
-
 .arrowCont {
   display: none;
   color: var(--indigo);
+}
+
+.arrowContWide {
+  @extend .arrowCont;
   @include tablet {
     display: inline-block;
     margin-top: 27px;
@@ -105,20 +117,22 @@
 
 .calendarContEnd {
   @extend .calendarCont;
-  @include tablet {
-  }
 }
 
 .timeDropdown {
   position: fixed;
   z-index: 14;
-top: 16rem; 
+  top: 16rem;
   width: 120px;
   height: 300px;
   background-color: white;
   border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   overflow-y: scroll;
+}
+
+.timeDropdownWide {
+  @extend .timeDropdown;
   @include tablet {
     position: absolute;
     left: 5px;

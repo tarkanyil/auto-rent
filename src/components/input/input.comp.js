@@ -5,10 +5,7 @@ import DateIcon from '@material-ui/icons/Event';
 import TimeIcon from '@material-ui/icons/Schedule';
 import DoubleArrowIcon from '@material-ui/icons/DoubleArrow';
 import DateFnsUtils from '@date-io/date-fns';
-import {
-  MuiPickersUtilsProvider,
-  DatePicker
-} from '@material-ui/pickers';
+import { MuiPickersUtilsProvider, DatePicker } from '@material-ui/pickers';
 import { createMuiTheme } from '@material-ui/core';
 import { ThemeProvider } from '@material-ui/styles';
 import { indigo as primary } from '@material-ui/core/colors';
@@ -23,7 +20,10 @@ const myTheme = createMuiTheme({
   }
 });
 
-const Input = () => {
+// Prop: 'mobile' (bool) - when it is added, bigger screen
+//sizes will have the same layout
+
+const Input = ({ mobile }) => {
   const [selectedStartDate, setStartDate] = useState(new Date());
   const [selectedEndDate, setEndDate] = useState(new Date());
   const [isOpen, setIsOpen] = useState(false);
@@ -60,11 +60,31 @@ const Input = () => {
     setIsOpen(true);
   };
 
+  let contStyle = styles.cont;
+  if (!mobile) {
+    contStyle = `${styles.cont} ${styles.contWide}`;
+  }
+
+  let unitContStyle = styles.untiCont;
+  if (!mobile) {
+    unitContStyle = `${styles.unitCont} ${styles.unitContWide}`;
+  }
+
+  let arrowContStyle = styles.arrowCont;
+  if (!mobile) {
+    arrowContStyle = `${styles.arrowCont} ${styles.arrowContWide}`;
+  }
+
+  let timeDropdownStyle = styles.timeDropdown;
+  if (!mobile) {
+    timeDropdownStyle = `${styles.timeDropdown} ${styles.timeDropdownWide}`;
+  }
+
   return (
     <ThemeProvider theme={myTheme}>
       <MuiPickersUtilsProvider utils={DateFnsUtils}>
-        <div className={styles.cont}>
-          <div className={styles.unitCont}>
+        <div className={contStyle}>
+          <div className={unitContStyle}>
             <div className={styles.label}>
               <p>From</p>
             </div>
@@ -96,7 +116,7 @@ const Input = () => {
                   <TimeIcon />
                 </div>
                 {isFromOpen && (
-                  <div className={styles.timeDropdown}>
+                  <div className={timeDropdownStyle}>
                     {availableTimes.map((time) => {
                       return (
                         <p
@@ -112,11 +132,11 @@ const Input = () => {
             </div>
           </div>
 
-          <div className={styles.arrowCont}>
+          <div className={arrowContStyle}>
             <DoubleArrowIcon className={styles.arrow} />
           </div>
 
-          <div className={styles.unitCont}>
+          <div className={unitContStyle}>
             <div className={styles.label}>
               <p>Until</p>
             </div>
@@ -148,7 +168,7 @@ const Input = () => {
                   <TimeIcon />
                 </div>
                 {isUntilOpen && (
-                  <div className={styles.timeDropdown}>
+                  <div className={timeDropdownStyle}>
                     {availableTimes.map((time) => {
                       return (
                         <p

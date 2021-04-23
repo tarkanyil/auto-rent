@@ -14,6 +14,7 @@
   --menu-font: 'Roboto Condensed', sans-serif;
   --width: 92%;
   --tablet-width: 87%;
+  --max-width: 75rem;
   --content-color: rgb(56, 51, 51);
   --test-color: rgb(75, 69, 69);
   --indigo: #4051b5;
@@ -67,6 +68,13 @@ p {
   width: 92%;
   margin: 0 auto;
   padding: 2rem 0;
+  max-width: var(--max-width);
+}
+
+@media screen and (min-width: 768px) {
+  .limitWidth {
+    width: 87%;
+  }
 }
 
 .swiper-button-next {

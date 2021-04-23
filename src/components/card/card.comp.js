@@ -10,8 +10,7 @@ const Card = () => {
     <div className={styles.cardCont}>
       {carData.map((car, idx) => {
         return (
-          <>
-            <div className={styles.card} key={idx}>
+            <div key={idx} className={styles.card}>
               <div className={styles.image}>
                 <img src={car.imgUrl} alt='car photo' srcset='' />
               </div>
@@ -28,8 +27,6 @@ const Card = () => {
                 <p className={styles.cardDesc}>{car.desc}</p>
               </div>
             </div>
-            <div style={{ height: '20px' }}></div>
-          </>
         );
       })}
     </div>
