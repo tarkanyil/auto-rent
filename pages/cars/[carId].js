@@ -13,6 +13,7 @@ import ShowHide from '../../src/components/show-hide/show-hide.comp';
 import Input from '../../src/components/input/input.comp';
 
 import { carData } from '../../src/utils/constants';
+import { getCars } from '../../src/firebase/cars';
 
 import Swiper from '../../src/components/swiper/swiper.comp';
 
@@ -271,7 +272,8 @@ const Car = ({ model, id, imgUrl, parameter }) => {
 export const getStaticProps = async (context) => {
   const parameter = context.params.carId;
 
-  const actualCar = carData.find((car) => car.id === parameter);
+  // const actualCar = carData.find((car) => car.id === parameter);
+  // const actualCar = getcar().docs;
 
   const model = actualCar.name;
   const id = actualCar.id;
@@ -288,13 +290,10 @@ export const getStaticProps = async (context) => {
 };
 
 export const getStaticPaths = async () => {
-  //get params
   const paths = carData.map(car => {
     const carId = car.id;
     return {params: {carId}};
   });
-
-  // return paths
   return {paths, fallback: true};
 }
 
