@@ -4,17 +4,19 @@ import styled from 'styled-components';
 export const Nav = styled.nav`
   height: 32px;
   width: 92%;
-  margin: 15px auto 0 auto;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 1.5rem 0;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   z-index: 10;
   position: relative;
-  @media screen and (min-width: 768px) {
+  /* @media screen and (min-width: 768px) {
     display: flex;
     flex-direction: row;
-  }
+  } */
 `;
 
 export const Hamburger = styled.div`

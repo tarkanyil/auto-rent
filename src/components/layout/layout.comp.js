@@ -3,8 +3,10 @@ import Navbar from '../navbar/navbar.comp';
 import Footer from '../footer/footer.comp';
 
 const Layout = (props) => (
-  <div className={styles.container} >
-    <Navbar />
+  <div className={styles.container}>
+    <div className={styles.navCont}>
+      <Navbar />
+    </div>
     {props.children}
     <Footer />
   </div>

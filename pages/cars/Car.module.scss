@@ -21,6 +21,31 @@
   }
 }
 
+.navBarCard {
+  // @extend .floatingCard;
+  display: none;
+  @include desktop {
+    position: fixed;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    width: 50%;
+    border: none;
+    box-shadow: none;
+    height: 3rem;
+    justify-content: flex-end;
+    top: 0;
+    right: 0;
+    padding-right: 7%;
+    background-color: white;
+  }
+}
+
+.navBarCardCost {
+  text-align: right;
+  margin-right: 1.5rem;
+}
+
 .leftSide {
   display: flex;
   flex-direction: column;
@@ -58,9 +83,18 @@
   @extend .contButton;
   display: none;
   @include desktop {
+    font-size: 1rem;
     display: inline-block;
     width: 100%;
     margin-bottom: 1rem !important;
+  }
+}
+
+.navBarCardContButton {
+  @extend .contButton;
+  @include desktop {
+    font-size: 1rem;
+    padding: 0.5rem 6rem !important;
   }
 }
 
@@ -119,7 +153,9 @@
 }
 
 .showHide {
-  width: 80%;
+  @include desktop {
+    width: 80%;
+  }
 }
 
 .aboutTitle {
@@ -133,8 +169,11 @@
 }
 
 .infoBoxTopDesktop {
-  margin-left: 20%;
-  margin-bottom: 2rem;
+  @include desktop {
+    margin-left: 20%;
+    margin-bottom: 2rem;
+  }
+
 }
 
 .favoritesButton {
@@ -172,6 +211,7 @@
 .extraItemCont {
   @extend .aboutCont;
   padding-bottom: 0;
+  flex-direction: column;
 }
 
 .extraItemCont > .divider, .Desktop > .divider {
@@ -190,6 +230,7 @@
   @extend .aboutTitle;
   margin-bottom: 0.4rem;
   margin-top: 0.6rem;
+  text-align: left;
   font-style: italic;
 }
 

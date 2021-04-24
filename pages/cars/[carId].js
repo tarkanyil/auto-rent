@@ -31,7 +31,7 @@ const Car = ({ model, id, imgUrl, parameter }) => {
   const fuelConsumption = 'n/a';
   const fuelType = 'Electric';
   const description =
-    'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid doloribus, quibusdam optio accusamus minima vero sit magnam beatae ducimus ratione natus molestias? Aut suscipit, porro ullam cupiditate eligendi sapiente dignissimos aliquam dolores distinctio autem laborum, vitae odio pariatur a atque.';
+    'Lorem ipsum dolor sit amet consectetur adipisicing elit. Et neque eligendi ut explicabo minus fugit est suscipit quas cumque. Repellat perferendis tenetur id, tempore, quos excepturi fuga, veritatis debitis nihil distinctio accusamus aut aliquid commodi eveniet saepe nulla officiis quo libero cupiditate doloribus deserunt ut. Nam dolor quod iste, quisquam temporibus quasi aperiam eveniet consequatur, quam labore minima impedit perferendis et unde, error odit ratione. Omnis culpa ad aliquid suscipit veniam rem dolores at debitis inventore facere soluta doloremque autem repellendus eius, incidunt assumenda. Porro numquam totam enim praesentium delectus saepe earum veniam, laudantium facilis recusandae quos eveniet omnis ex ipsam rerum doloribus doloremque minima? Ipsam facere ut impedit perspiciatis incidunt ea, cumque commodi tempora repellat consequuntur et aut, at repudiandae, natus maiores? Cupiditate, consectetur? Deleniti consequuntur ex, atque necessitatibus praesentium excepturi culpa sapiente in dolor tenetur est ullam sed doloremque ipsam consectetur iste earum odio aut unde quia facilis? Ducimus voluptates incidunt voluptatibus vitae laboriosam. Tempora sapiente tempore enim. Velit unde tempore soluta consequatur commodi est sint? Neque tempore sequi vel delectus aliquid ex nulla ipsam, officia eveniet blanditiis laudantium sapiente tenetur corrupti eos cumque nesciunt nemo illum placeat inventore ipsa fuga fugiat. Neque unde nostrum hic rem sequi.';
   const features = [
     'Feature 1',
     'Feature 2',
@@ -106,7 +106,7 @@ const Car = ({ model, id, imgUrl, parameter }) => {
           <link rel='icon' href='/favicon.ico' />
         </Head>
 
-        <div className={`${styles.swiper} wide`} wide>
+        <div className={`${styles.swiper} wide`}>
           <Swiper source={carData} />
         </div>
 
@@ -247,13 +247,28 @@ const Car = ({ model, id, imgUrl, parameter }) => {
               </Link>
             </div>
           </div>
+
+          <div className={styles.navBarCard}>
+            <div className={styles.navBarCardCost}>
+              <p className={styles.perDay}>&euro;/day</p>
+              <p className={styles.totalCost}>total cost</p>
+            </div>
+            <div className={styles.rightSide}>
+              <Link href=''>
+                <Button className={styles.navBarCardContButton} variant='contained'>
+                  Continue
+                </Button>
+              </Link>
+            </div>
+          </div>
+
         </div>
       </div>
     </Layout>
   );
 };
 
-export const getServerSideProps = async (context) => {
+export const getStaticProps = async (context) => {
   const parameter = context.params.carId;
 
   const actualCar = carData.find((car) => car.id === parameter);
@@ -271,5 +286,16 @@ export const getServerSideProps = async (context) => {
     }
   };
 };
+
+export const getStaticPaths = async () => {
+  //get params
+  const paths = carData.map(car => {
+    const carId = car.id;
+    return {params: {carId}};
+  });
+
+  // return paths
+  return {paths, fallback: true};
+}
 
 export default Car;
