@@ -2,6 +2,9 @@ import { useState } from 'react';
 import styles from './Car.module.scss';
 import Link from 'next/link';
 
+import dbConnect from '../../src/utils/dbConnect';
+import CarModel from '../../src/models/Car';
+
 import Button from '@material-ui/core/Button';
 import HeartIcon from '@material-ui/icons/FavoriteBorder';
 import PlaceholderIcon from '@material-ui/icons/AssignmentTurnedIn';
@@ -19,11 +22,8 @@ import Swiper from '../../src/components/swiper/swiper.comp';
 
 // div imports
 
-const Car = ({ model, id, imgUrl, parameter }) => {
-  const showBtnText = 'Show more';
-  const [isDescFull, setIsDescFull] = useState(false);
-  const [descBtn, setDescBtn] = useState(showBtnText);
-
+const Car = ({ car }) => {
+  const model = car.model;
   const subtitle = 'Some cool subtitle';
   const distanceFee = 0.5;
   const kmIncluded = 300;
@@ -256,45 +256,59 @@ const Car = ({ model, id, imgUrl, parameter }) => {
             </div>
             <div className={styles.rightSide}>
               <Link href=''>
-                <Button className={styles.navBarCardContButton} variant='contained'>
+                <Button
+                  className={styles.navBarCardContButton}
+                  variant='contained'>
                   Continue
                 </Button>
               </Link>
             </div>
           </div>
-
         </div>
       </div>
     </Layout>
   );
 };
 
-export const getStaticProps = async (context) => {
-  const parameter = context.params.carId;
+export const getStaticProps = async ({ params }) => {
+  await dbConnect();
 
-  // const actualCar = carData.find((car) => car.id === parameter);
-  // const actualCar = getcar().docs;
+  const path = params.carId;
 
-  const model = actualCar.name;
-  const id = actualCar.id;
-  const imgUrl = actualCar.imgUrl;
+  const result = await CarModel.find(
+    {
+      myPath: path
+    },
+    (err, docs) => {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log(docs);
+      }
+    }
+  ).lean();
+  result[0]._id = result[0]._id.toString();
+
+  const car = result[0];
+
+  console.log(car);
+
+  // const model = car.model;
+  // const path = car.myPath;
 
   return {
     props: {
-      model,
-      id,
-      imgUrl,
-      parameter
+      car
     }
   };
 };
 
 export const getStaticPaths = async () => {
-  const paths = carData.map(car => {
+  const paths = carData.map((car) => {
     const carId = car.id;
-    return {params: {carId}};
+    return { params: { carId } };
   });
-  return {paths, fallback: true};
-}
+  return { paths, fallback: true };
+};
 
 export default Car;
