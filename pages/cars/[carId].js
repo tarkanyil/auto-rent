@@ -4,6 +4,7 @@ import Link from 'next/link';
 
 import dbConnect from '../../src/utils/dbConnect';
 import CarModel from '../../src/models/Auto';
+import Attribute from '../../src/models/Attribute';
 
 // temp from here
 // import addNewAttribute from '../../src/utils/addNewAttribute';
@@ -25,24 +26,18 @@ import Swiper from '../../src/components/swiper/swiper.comp';
 
 // div imports
 
-const Car = ({ car }) => {
-  const model = car.model;
-  const subtitle = 'Some cool subtitle';
+const Car = ({ car, featuresMap, extrasMap }) => {
   const distanceFee = 0.5;
   const kmIncluded = 300;
-  const doors = 4;
-  const seats = 5;
-  const fuelConsumption = 'n/a';
-  const fuelType = 'Electric';
-  const description =
-    'Lorem ipsum dolor sit amet consectetur adipisicing elit. Et neque eligendi ut explicabo minus fugit est suscipit quas cumque. Repellat perferendis tenetur id, tempore, quos excepturi fuga, veritatis debitis nihil distinctio accusamus aut aliquid commodi eveniet saepe nulla officiis quo libero cupiditate doloribus deserunt ut. Nam dolor quod iste, quisquam temporibus quasi aperiam eveniet consequatur, quam labore minima impedit perferendis et unde, error odit ratione. Omnis culpa ad aliquid suscipit veniam rem dolores at debitis inventore facere soluta doloremque autem repellendus eius, incidunt assumenda. Porro numquam totam enim praesentium delectus saepe earum veniam, laudantium facilis recusandae quos eveniet omnis ex ipsam rerum doloribus doloremque minima? Ipsam facere ut impedit perspiciatis incidunt ea, cumque commodi tempora repellat consequuntur et aut, at repudiandae, natus maiores? Cupiditate, consectetur? Deleniti consequuntur ex, atque necessitatibus praesentium excepturi culpa sapiente in dolor tenetur est ullam sed doloremque ipsam consectetur iste earum odio aut unde quia facilis? Ducimus voluptates incidunt voluptatibus vitae laboriosam. Tempora sapiente tempore enim. Velit unde tempore soluta consequatur commodi est sint? Neque tempore sequi vel delectus aliquid ex nulla ipsam, officia eveniet blanditiis laudantium sapiente tenetur corrupti eos cumque nesciunt nemo illum placeat inventore ipsa fuga fugiat. Neque unde nostrum hic rem sequi.';
-  const features = [
-    'Feature 1',
-    'Feature 2',
-    'Feature 3',
-    'Feature 4',
-    'Feature 5'
-  ];
+
+  // map feature names of the car to readable display names
+  const feat = Object.entries(car.features);
+  const featWithoutId = feat.filter(feat => feat[0] != '_id');
+  const features = featWithoutId.map((feat) => {
+    const feature = featuresMap.find(({ name }) => name === feat[0]);
+    return feature.displayName;
+  });
+
   const extras = [
     {
       title: 'Extra 1',
@@ -97,7 +92,9 @@ const Car = ({ car }) => {
 
   const Heading = () => (
     <>
-      <h1>{car.brand} {car.model}</h1>
+      <h1>
+        {car.brand} {car.model}
+      </h1>
       <h3 className={styles.subtitle}>{car.subtitle}</h3>
     </>
   );
@@ -106,7 +103,9 @@ const Car = ({ car }) => {
     <Layout>
       <div className={styles.container}>
         <Head>
-          <title>XiCars - {car.brand} {car.model}</title>
+          <title>
+            XiCars - {car.brand} {car.model}
+          </title>
           <link rel='icon' href='/favicon.ico' />
         </Head>
 
@@ -141,12 +140,12 @@ const Car = ({ car }) => {
                     {car.featurePreview.fuelType}
                   </p>
                   <p className={styles.featPrevItem}>
-                    <PlaceholderIcon className={styles.featPrevIcon} /> {car.featurePreview.doors}{' '}
-                    doors
+                    <PlaceholderIcon className={styles.featPrevIcon} />{' '}
+                    {car.featurePreview.doors} doors
                   </p>
                   <p className={styles.featPrevItem}>
-                    <PlaceholderIcon className={styles.featPrevIcon} /> {car.featurePreview.seats}{' '}
-                    seats
+                    <PlaceholderIcon className={styles.featPrevIcon} />{' '}
+                    {car.featurePreview.seats} seats
                   </p>
                 </div>
               </div>
@@ -276,6 +275,7 @@ const Car = ({ car }) => {
 export const getStaticProps = async ({ params }) => {
   await dbConnect();
 
+  // get the data of the actual car
   const path = params.carId;
   console.log(path);
 
@@ -298,9 +298,25 @@ export const getStaticProps = async ({ params }) => {
   car.prices.forEach((item) => (item._id = item._id.toString()));
   car.features._id = car.features._id.toString();
 
+  // get the attribute mapping data
+  const attributeResult = await Attribute.find({});
+
+  const attributes = attributeResult.map((doc) => {
+    const attribute = doc.toObject();
+    attribute._id = doc._id.toString();
+    return attribute;
+  });
+
+  const featuresMap = attributes.filter((doc) => doc.type === 'feature');
+  const extrasMap = attributes.filter((doc) => doc.type === 'extra');
+
+  console.log(extrasMap);
+
   return {
     props: {
-      car
+      car,
+      featuresMap,
+      extrasMap
     }
   };
 };
@@ -316,15 +332,13 @@ export const getStaticPaths = async () => {
 
   // addNewAttribute();
 
-  const result = await CarModel.find(
-    (err) => {
-      if (err) {
-        console.log(err);
-      } else {
-        console.log('data retreived from getStaticPaths');
-      }
+  const result = await CarModel.find((err) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log('data retreived from getStaticPaths');
     }
-  ).lean();
+  }).lean();
 
   const paths = result.map((car) => {
     const carId = car.path;
