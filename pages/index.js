@@ -11,11 +11,10 @@ import ImageSearch from '../src/sections/home-image-search/home-image-search.com
 import OurCars from '../src/sections/home-our-cars/our-cars.comp';
 import HowItWorks from '../src/sections/home-how-it-works/how-it-works.comp';
 import About from '../src/sections/about/about.comp';
-import { getCars } from '../src/firebase/cars';
 
 export default function Home() {
   useEffect(() => {
-    getCars();
+    
   },[])
 
   return (

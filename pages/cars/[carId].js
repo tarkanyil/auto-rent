@@ -3,7 +3,11 @@ import styles from './Car.module.scss';
 import Link from 'next/link';
 
 import dbConnect from '../../src/utils/dbConnect';
-import CarModel from '../../src/models/Car';
+import CarModel from '../../src/models/Auto';
+
+// temp from here
+// import addNewAttribute from '../../src/utils/addNewAttribute';
+// temp until here
 
 import Button from '@material-ui/core/Button';
 import HeartIcon from '@material-ui/icons/FavoriteBorder';
@@ -16,7 +20,6 @@ import ShowHide from '../../src/components/show-hide/show-hide.comp';
 import Input from '../../src/components/input/input.comp';
 
 import { carData } from '../../src/utils/constants';
-import { getCars } from '../../src/firebase/cars';
 
 import Swiper from '../../src/components/swiper/swiper.comp';
 
@@ -94,8 +97,8 @@ const Car = ({ car }) => {
 
   const Heading = () => (
     <>
-      <h1>{model}</h1>
-      <h3 className={styles.subtitle}>{subtitle}</h3>
+      <h1>{car.brand} {car.model}</h1>
+      <h3 className={styles.subtitle}>{car.subtitle}</h3>
     </>
   );
 
@@ -103,7 +106,7 @@ const Car = ({ car }) => {
     <Layout>
       <div className={styles.container}>
         <Head>
-          <title>XiCars - {model}</title>
+          <title>XiCars - {car.brand} {car.model}</title>
           <link rel='icon' href='/favicon.ico' />
         </Head>
 
@@ -127,22 +130,22 @@ const Car = ({ car }) => {
                   <Heading />
                 </div>
                 <div className={styles.featPrev}>
-                  {fuelType != 'Electric' && (
+                  {car.featurePreview.fuelType != 'Electric' && (
                     <p className={styles.featPrevItem}>
                       <PlaceholderIcon className={styles.featPrevIcon} />{' '}
-                      {fuelConsumption}
+                      {car.featurePreview.consumptionLiterPer100km} L/100km
                     </p>
                   )}
                   <p className={styles.featPrevItem}>
                     <PlaceholderIcon className={styles.featPrevIcon} />{' '}
-                    {fuelType}
+                    {car.featurePreview.fuelType}
                   </p>
                   <p className={styles.featPrevItem}>
-                    <PlaceholderIcon className={styles.featPrevIcon} /> {doors}{' '}
+                    <PlaceholderIcon className={styles.featPrevIcon} /> {car.featurePreview.doors}{' '}
                     doors
                   </p>
                   <p className={styles.featPrevItem}>
-                    <PlaceholderIcon className={styles.featPrevIcon} /> {seats}{' '}
+                    <PlaceholderIcon className={styles.featPrevIcon} /> {car.featurePreview.seats}{' '}
                     seats
                   </p>
                 </div>
@@ -154,7 +157,7 @@ const Car = ({ car }) => {
 
                   <div className={styles.showHide}>
                     <ShowHide height='L'>
-                      <p className={styles.sectionBig}>{description}</p>
+                      <p className={styles.sectionBig}>{car.description}</p>
                     </ShowHide>
                   </div>
                 </div>
@@ -206,7 +209,7 @@ const Car = ({ car }) => {
                   <h3 className={styles.aboutTitle}>Guidelines</h3>
                   <div className={styles.showHide}>
                     <ShowHide height='s'>
-                      <p className={styles.sectionBig}>{description}</p>
+                      <p className={styles.sectionBig}>{car.guideLines}</p>
                     </ShowHide>
                   </div>
                 </div>
@@ -274,27 +277,26 @@ export const getStaticProps = async ({ params }) => {
   await dbConnect();
 
   const path = params.carId;
+  console.log(path);
 
   const result = await CarModel.find(
     {
-      myPath: path
+      path: path
     },
-    (err, docs) => {
+    (err) => {
       if (err) {
         console.log(err);
       } else {
-        console.log(docs);
+        console.log('data retreived from getStaticProps');
       }
     }
   ).lean();
-  result[0]._id = result[0]._id.toString();
 
   const car = result[0];
 
-  console.log(car);
-
-  // const model = car.model;
-  // const path = car.myPath;
+  car._id = car._id.toString();
+  car.prices.forEach((item) => (item._id = item._id.toString()));
+  car.features._id = car.features._id.toString();
 
   return {
     props: {
@@ -304,10 +306,31 @@ export const getStaticProps = async ({ params }) => {
 };
 
 export const getStaticPaths = async () => {
-  const paths = carData.map((car) => {
-    const carId = car.id;
+  // query from the constants file
+  // const paths = carData.map((car) => {
+  //   const carId = car.id;
+  //   return { params: { carId } };
+  // });
+
+  await dbConnect();
+
+  // addNewAttribute();
+
+  const result = await CarModel.find(
+    (err) => {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log('data retreived from getStaticPaths');
+      }
+    }
+  ).lean();
+
+  const paths = result.map((car) => {
+    const carId = car.path;
     return { params: { carId } };
   });
+
   return { paths, fallback: true };
 };
 
