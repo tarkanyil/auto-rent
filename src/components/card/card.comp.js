@@ -5,26 +5,26 @@ import Button from '@material-ui/core/Button';
 
 import { carData } from '../../utils/constants';
 
-const Card = () => {
+const Card = ({ cars }) => {
   return (
     <div className={styles.cardCont}>
-      {carData.map((car, idx) => {
+      {cars.map((car, idx) => {
         return (
             <div key={idx} className={styles.card}>
               <div className={styles.image}>
-                <img src={car.imgUrl} alt='car photo' srcset='' />
+                <img src={car.image} alt='car photo' srcset='' />
               </div>
               <div className={styles.description}>
                 <div className={styles.buttonCont}>
-                  <Link href={`/cars/${car.id}`}>
+                  <Link href={`/cars/${car.path}`}>
                     <Button className={styles.button} variant='contained'>
                       Explore now!
                     </Button>
                   </Link>
                 </div>
-                <h3 className={styles.cardTitle}>{car.name}</h3>
+                <h3 className={styles.cardTitle}>{car.brand} {car.model}</h3>
                 <div className={styles.divider}></div>
-                <p className={styles.cardDesc}>{car.desc}</p>
+                <p className={styles.cardDesc}>Some cool text :)</p>
               </div>
             </div>
         );
@@ -34,3 +34,5 @@ const Card = () => {
 };
 
 export default Card;
+
+

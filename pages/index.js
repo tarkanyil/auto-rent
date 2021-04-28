@@ -2,6 +2,9 @@ import { useEffect } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 
+import dbConnect from '../src/utils/dbConnect';
+import CarModel from '../src/models/Auto';
+
 import styles from '../styles/Home.module.scss';
 
 import Layout from '../src/components/layout/layout.comp';
@@ -12,10 +15,8 @@ import OurCars from '../src/sections/home-our-cars/our-cars.comp';
 import HowItWorks from '../src/sections/home-how-it-works/how-it-works.comp';
 import About from '../src/sections/about/about.comp';
 
-export default function Home() {
-  useEffect(() => {
-    
-  },[])
+export default function Home({ cars }) {
+  useEffect(() => {}, []);
 
   return (
     <Layout>
@@ -35,7 +36,7 @@ export default function Home() {
 
         <div className='wide'>
           <div className='limitWidth'>
-            <OurCars />
+            <OurCars cars={cars} />
           </div>{' '}
         </div>
 
@@ -48,3 +49,29 @@ export default function Home() {
     </Layout>
   );
 }
+
+export const getStaticProps = async () => {
+  await dbConnect();
+
+  // get the data of all cars
+  const result = await CarModel.find({}, (err) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log('data retreived from getStaticProps on the index page');
+    }
+  }).lean();
+
+  const cars = result.map((car) => {
+    const actualCar = { path: car.path, image: car.images[0], brand: car.brand, model: car.model };
+    return actualCar;
+  });
+
+  // console.log(cars);
+
+  return {
+    props: {
+      cars
+    }
+  };
+};

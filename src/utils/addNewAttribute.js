@@ -15,3 +15,4 @@ const addNewAttribute = async () => {
 };
 
 export default addNewAttribute;
+

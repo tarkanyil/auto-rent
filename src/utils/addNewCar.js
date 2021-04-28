@@ -8,7 +8,7 @@ const addNewCar = async () => {
     subtitle: 'Cabriolet',
     description:
       'Wer einen Tesla Model S mit unglaublichen 772 PS mal ausführlich testen möchte ist hier genau richtig. Eine detaillierte Einweisung und ein paar Alltagserfahrung meinerseits, gibt es inklusive.',
-    path: 'tesla-model-s',
+    path: 'porsche-911-cabriolet',
       images: [
       'https://images.unsplash.com/photo-1536700503339-1e4b06520771?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
       'https://images.unsplash.com/photo-1541446654331-def41325e92c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
@@ -28,10 +28,10 @@ const addNewCar = async () => {
       { forDays: 30, includedKm: 2000, pricePerDay: 60 }
     ],
     deposit: 1000, // EUR value of deposit
-    extras: {
-      extraKm: { kmCount: 100, price: 75 },
-      cleaning: 25
-    },
+    extras: [
+      { name: 'cleaning', displayName: 'Cleaning', price: '25', pricePer: 'trip' },
+      { name: 'extraKm', displayName: 'Additional mileage', price: '75', pricePer: '100km' }
+    ],
     features: {
       // pre-defined features, that are displayed with proprietary icon on the frontend
       automaticGear: true,
@@ -51,7 +51,7 @@ const addNewCar = async () => {
       auxInput: true
     },
     additionalFeatures: ['additional feature 1', 'additional feature 2'], // additional features, displayed with a generic icon on the frontend
-    guideLines: 'Guidelines text value'
+    guidelines: 'Guidelines text value'
   });
   car.save((err) => {
     if (err) return console.log(err);

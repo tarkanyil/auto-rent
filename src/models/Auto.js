@@ -16,7 +16,7 @@ const FeaturesSchema = new Schema({
   usbInput: Boolean,
   androidAuto: Boolean,
   appleCarPlay: Boolean,
-  auxInput: Boolean,
+  auxInput: Boolean
 });
 
 const AutoSchema = new Schema({
@@ -38,13 +38,22 @@ const AutoSchema = new Schema({
   },
   prices: [{ forDays: Number, includedKm: Number, pricePerDay: Number }],
   deposit: Number, // EUR value of deposit
-  extras: {
-    extraKm: { kmCount: Number, price: Number },
-    cleaning: Number
-  },
+  extras: [
+    {
+      name: String,
+      displayName: String,
+      price: Number,
+      pricePer: String
+    }
+  ],
   features: FeaturesSchema, // pre-defined features, that are displayed with proprietary icon on the frontend
   additionalFeatures: [String], // additional features, displayed with a generic icon on the frontend
-  guideLines: String
+  guidelines: String
 });
 
-export default mongoose.models.Vehicle || mongoose.model('Vehicle', AutoSchema);
+// AutoSchema.remove('extras');
+// AutoSchema.remove('guideLines');
+// AutoSchema.add({ guidelines: 'string' });
+// AutoSchema.add({ extras: [{ name: 'string', displayName: 'string', price: 'number', pricePer: 'string' }]});
+
+export default mongoose.models.Auto || mongoose.model('Auto', AutoSchema);

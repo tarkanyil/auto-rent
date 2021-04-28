@@ -8,6 +8,7 @@ import Attribute from '../../src/models/Attribute';
 
 // temp from here
 // import addNewAttribute from '../../src/utils/addNewAttribute';
+// import addNewCar from '../../src/utils/addNewCar';
 // temp until here
 
 import Button from '@material-ui/core/Button';
@@ -30,37 +31,26 @@ const Car = ({ car, featuresMap, extrasMap }) => {
   const distanceFee = 0.5;
   const kmIncluded = 300;
 
-  // map feature names of the car to readable display names
+  // map pre-defined feature names of the car to readable display names
   const feat = Object.entries(car.features);
-  const featWithoutId = feat.filter(feat => feat[0] != '_id');
+  const featWithoutId = feat.filter((feat) => feat[0] != '_id');
   const features = featWithoutId.map((feat) => {
     const feature = featuresMap.find(({ name }) => name === feat[0]);
     return feature.displayName;
   });
 
-  const extras = [
-    {
-      title: 'Extra 1',
-      desc:
-        'Extra 1 description. Lorem ipsum dolor sit, amet consectetur adipisicing.',
-      price: 20,
-      pricePer: 'trip'
-    },
-    {
-      title: 'Extra 2',
-      desc:
-        'Extra 2 description. Lorem ipsum dolor sit, amet consectetur adipisicing.',
-      price: 15,
-      pricePer: 'day'
-    },
-    {
-      title: 'Extra 3',
-      desc:
-        'Extra 3 description. Lorem ipsum dolor sit, amet consectetur adipisicing.',
-      price: 25,
-      pricePer: 'day'
-    }
-  ];
+  const additionalFeatures = car.additionalFeatures;
+
+  // add descrption and display name to extra data stored on the car document
+  const extras = car.extras.map(extra => {
+    // find the desciption record with the matching name
+    const foundRecord = extrasMap.find(({ name }) => name === extra.name);
+    const displayName = foundRecord.displayName;
+    const description = foundRecord.description;
+    const result = {...extra, displayName, description};
+    return result;
+  })
+
 
   const ReservationBox = ({ mobile }) => (
     <div>
@@ -172,6 +162,12 @@ const Car = ({ car, featuresMap, extrasMap }) => {
                             {feature}
                           </p>
                         ))}
+                        {additionalFeatures.map((feature, idx) => (
+                          <p key={idx} className={styles.featItem}>
+                            <PlaceholderIcon className={styles.featPrevIcon} />
+                            {feature}
+                          </p>
+                        ))}
                       </div>
                     </ShowHide>
                   </div>
@@ -189,8 +185,8 @@ const Car = ({ car, featuresMap, extrasMap }) => {
                       <div className={styles.extraItems}>
                         {extras.map((extra, idx) => (
                           <div key={idx} className={styles.extraItemCont}>
-                            <h3 className={styles.extraTitle}>{extra.title}</h3>
-                            <p className={styles.extraDesc}>{extra.desc}</p>
+                            <h3 className={styles.extraTitle}>{extra.displayName}</h3>
+                            <p className={styles.extraDesc}>{extra.description}</p>
                             <p className={styles.extraPrice}>
                               &euro;{extra.price}/{extra.pricePer}
                             </p>
@@ -287,15 +283,20 @@ export const getStaticProps = async ({ params }) => {
       if (err) {
         console.log(err);
       } else {
-        console.log('data retreived from getStaticProps');
+        console.log('data retreived from getStaticProps on car page');
       }
     }
   ).lean();
 
+
+
   const car = result[0];
+
+  // console.log(car);
 
   car._id = car._id.toString();
   car.prices.forEach((item) => (item._id = item._id.toString()));
+  car.extras.forEach((item) => (item._id = item._id.toString()));
   car.features._id = car.features._id.toString();
 
   // get the attribute mapping data
@@ -310,7 +311,7 @@ export const getStaticProps = async ({ params }) => {
   const featuresMap = attributes.filter((doc) => doc.type === 'feature');
   const extrasMap = attributes.filter((doc) => doc.type === 'extra');
 
-  console.log(extrasMap);
+  // console.log(extrasMap);
 
   return {
     props: {
@@ -336,7 +337,7 @@ export const getStaticPaths = async () => {
     if (err) {
       console.log(err);
     } else {
-      console.log('data retreived from getStaticPaths');
+      console.log('data retreived from getStaticPaths on car page');
     }
   }).lean();
 
