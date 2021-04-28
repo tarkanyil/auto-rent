@@ -81,7 +81,7 @@
 
 .contButtonDesktop {
   @extend .contButton;
-  display: none !important;
+  display: none;
   @include desktop {
     font-size: 1rem;
     display: inline-block;

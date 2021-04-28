@@ -6,6 +6,8 @@ import dbConnect from '../../src/utils/dbConnect';
 import CarModel from '../../src/models/Auto';
 import Attribute from '../../src/models/Attribute';
 
+import calcRentPrice from '../../src/utils/calcRentPrice';
+
 // temp from here
 // import addNewAttribute from '../../src/utils/addNewAttribute';
 // import addNewCar from '../../src/utils/addNewCar';
@@ -42,15 +44,20 @@ const Car = ({ car, featuresMap, extrasMap }) => {
   const additionalFeatures = car.additionalFeatures;
 
   // add descrption and display name to extra data stored on the car document
-  const extras = car.extras.map(extra => {
+  const extras = car.extras.map((extra) => {
     // find the desciption record with the matching name
     const foundRecord = extrasMap.find(({ name }) => name === extra.name);
     const displayName = foundRecord.displayName;
     const description = foundRecord.description;
-    const result = {...extra, displayName, description};
+    const result = { ...extra, displayName, description };
     return result;
-  })
+  });
 
+  //calculate rent prices based on rental length
+  const lengthRent = 3;
+  const priceArray = car.prices;
+  const rentPrice = calcRentPrice({ priceArray, lengthRent });
+  console.log(rentPrice);
 
   const ReservationBox = ({ mobile }) => (
     <div>
@@ -185,8 +192,12 @@ const Car = ({ car, featuresMap, extrasMap }) => {
                       <div className={styles.extraItems}>
                         {extras.map((extra, idx) => (
                           <div key={idx} className={styles.extraItemCont}>
-                            <h3 className={styles.extraTitle}>{extra.displayName}</h3>
-                            <p className={styles.extraDesc}>{extra.description}</p>
+                            <h3 className={styles.extraTitle}>
+                              {extra.displayName}
+                            </h3>
+                            <p className={styles.extraDesc}>
+                              {extra.description}
+                            </p>
                             <p className={styles.extraPrice}>
                               &euro;{extra.price}/{extra.pricePer}
                             </p>
@@ -204,7 +215,7 @@ const Car = ({ car, featuresMap, extrasMap }) => {
                   <h3 className={styles.aboutTitle}>Guidelines</h3>
                   <div className={styles.showHide}>
                     <ShowHide height='s'>
-                      <p className={styles.sectionBig}>{car.guideLines}</p>
+                      <p className={styles.sectionBig}>{car.guidelines}</p>
                     </ShowHide>
                   </div>
                 </div>
@@ -214,8 +225,12 @@ const Car = ({ car, featuresMap, extrasMap }) => {
             <div className={styles.layoutRightSide}>
               <div className={styles.Desktop}>
                 <div className={styles.leftSide}>
-                  <p className={styles.perDay}>&euro;/day</p>
-                  <p className={styles.totalCost}>total cost</p>
+                  <p className={styles.perDay}>
+                    {rentPrice.pricePerDay}&euro;/day
+                  </p>
+                  <p className={styles.totalCost}>
+                    {rentPrice.priceTotal}&euro; est. total + extras
+                  </p>
                 </div>
                 <Divider className={styles.divider} />
                 <ReservationBox mobile='true' />
@@ -235,8 +250,10 @@ const Car = ({ car, featuresMap, extrasMap }) => {
 
           <div className={styles.floatingCard}>
             <div className={styles.leftSide}>
-              <p className={styles.perDay}>&euro;/day</p>
-              <p className={styles.totalCost}>total cost</p>
+              <p className={styles.perDay}>{rentPrice.pricePerDay}&euro;/day</p>
+              <p className={styles.totalCost}>
+                {rentPrice.priceTotal}&euro; est. total + extras
+              </p>
             </div>
             <div className={styles.rightSide}>
               <Link href=''>
@@ -249,8 +266,10 @@ const Car = ({ car, featuresMap, extrasMap }) => {
 
           <div className={styles.navBarCard}>
             <div className={styles.navBarCardCost}>
-              <p className={styles.perDay}>&euro;/day</p>
-              <p className={styles.totalCost}>total cost</p>
+              <p className={styles.perDay}>{rentPrice.pricePerDay}&euro;/day</p>
+              <p className={styles.totalCost}>
+                {rentPrice.priceTotal}&euro; est. total + extras
+              </p>
             </div>
             <div className={styles.rightSide}>
               <Link href=''>
@@ -287,8 +306,6 @@ export const getStaticProps = async ({ params }) => {
       }
     }
   ).lean();
-
-
 
   const car = result[0];
 

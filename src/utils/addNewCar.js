@@ -4,7 +4,7 @@ const addNewCar = async () => {
   // new car document
   const car = new Auto({
     brand: 'Porsche',
-    model: '911',
+    model: '91111111',
     subtitle: 'Cabriolet',
     description:
       'Wer einen Tesla Model S mit unglaublichen 772 PS mal ausführlich testen möchte ist hier genau richtig. Eine detaillierte Einweisung und ein paar Alltagserfahrung meinerseits, gibt es inklusive.',

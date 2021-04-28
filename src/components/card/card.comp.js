@@ -1,5 +1,6 @@
 import styles from './Card.module.scss';
 import Link from 'next/link';
+import Image from 'next/image';
 
 import Button from '@material-ui/core/Button';
 
@@ -12,7 +13,7 @@ const Card = ({ cars }) => {
         return (
             <div key={idx} className={styles.card}>
               <div className={styles.image}>
-                <img src={car.image} alt='car photo' srcset='' />
+                <img src={car.image} alt='car photo' layout='fill' objectFit='contain' />
               </div>
               <div className={styles.description}>
                 <div className={styles.buttonCont}>
