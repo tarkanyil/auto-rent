@@ -16,9 +16,11 @@ const calcRentPrice = ({ priceArray, lengthRent }) => {
 
   // defining pricePerDay for the rental period
   let pricePerDay = priceArray[0].pricePerDay;
+  let includedKm = priceArray[0].includedKm;
   for (let i = 1; i < priceArray.length; i++) {
     if (priceArray[i].forDays <= lengthRent) {
       pricePerDay = priceArray[i].pricePerDay;
+      includedKm = priceArray[i].includedKm;
     } else {
       break;
     }
@@ -28,7 +30,8 @@ const calcRentPrice = ({ priceArray, lengthRent }) => {
 
   const result = {
     pricePerDay: pricePerDay,
-    priceTotal: pricePerDay * lengthRent
+    priceTotal: pricePerDay * lengthRent,
+    includedKm: includedKm
   };
 
   return result;

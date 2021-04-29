@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { withStyles } from '@material-ui/core/styles';
+import { useRouter } from 'next/router';
 
 import OutsideClickHandler from 'react-outside-click-handler';
 import styles from './Navbar.module.scss';
@@ -14,8 +14,11 @@ import {
   NavDropdown,
   ItemsFromMain,
   NavDropdownItem,
+  StyledDropdownItem,
   Hamburger
 } from './navbar.styles';
+
+import { useAuth } from '../../utils/auth';
 
 // Material-UI components
 import CloseIcon from '@material-ui/icons/Close';
@@ -27,11 +30,23 @@ import AccountIcon from '@material-ui/icons/AccountCircleOutlined';
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const auth = useAuth();
+
+  const router = useRouter();
 
   const handleDropdownClick = () => {
     setOpen(!open);
   };
+
+  const signOut = () => {
+    handleDropdownClick();
+    auth.signout().then(() => {
+      console.log('Logged out');
+      router.push('/');
+    });
+  };
+
+  console.log(auth.user);
 
   // const UserButton = withStyles({
   //   root: {
@@ -45,18 +60,20 @@ const Navbar = () => {
   return (
     <Nav>
       <NavLink href='/'>
-        <LogoIcon /> XiCar
+        <LogoIcon /> XiCar {auth.user && auth.user.email}
       </NavLink>
 
       <NavMenu className={styles.flexParent}>
         <CollapsableLinks className={styles.flexParent}>
-          <NavLink href='/' className={styles.flexItem}>Our cars</NavLink>
+          <NavLink href='/' className={styles.flexItem}>
+            Our cars
+          </NavLink>
           <NavLink href='/'>About XiCar</NavLink>
         </CollapsableLinks>
-        {!isLoggedIn && (
+        {!auth.user && (
           <LoginLinks className={styles.flexParent}>
-            <NavLink href='/'>Log In</NavLink>
-            <NavLink href='/'>Sign Up</NavLink>
+            <NavLink href='/signin'>Log In</NavLink>
+            <NavLink href='/signup'>Sign Up</NavLink>
           </LoginLinks>
         )}
 
@@ -92,10 +109,10 @@ const Navbar = () => {
               <NavDropdownItem href='/' onClick={handleDropdownClick}>
                 Some other stuff
               </NavDropdownItem>
-              {isLoggedIn && (
-                <NavDropdownItem href='/' onClick={handleDropdownClick}>
+              {auth.user && (
+                <StyledDropdownItem onClick={signOut}>
                   Log out
-                </NavDropdownItem>
+                </StyledDropdownItem>
               )}
             </NavDropdown>
           </OutsideClickHandler>

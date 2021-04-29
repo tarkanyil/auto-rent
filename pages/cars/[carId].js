@@ -80,7 +80,7 @@ const Car = ({ car, featuresMap, extrasMap }) => {
           </p>{' '}
         </div>
         <div className={styles.rightSide}>
-          <p className={styles.sectionBig}>{kmIncluded} km</p>
+          <p className={styles.sectionBig}>{rentPrice.includedKm} km</p>
         </div>
       </div>
       <Divider />

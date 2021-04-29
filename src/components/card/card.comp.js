@@ -13,7 +13,7 @@ const Card = ({ cars }) => {
         return (
             <div key={idx} className={styles.card}>
               <div className={styles.image}>
-                <img src={car.image} alt='car photo' layout='fill' objectFit='contain' />
+                <img src={car.image} alt='car photo' layout='fill' objectfit='contain' />
               </div>
               <div className={styles.description}>
                 <div className={styles.buttonCont}>
