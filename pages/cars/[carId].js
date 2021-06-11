@@ -54,7 +54,7 @@ const Car = ({ car, featuresMap, extrasMap }) => {
   });
 
   //calculate rent prices based on rental length
-  const lengthRent = 3;
+  const lengthRent = 14;
   const priceArray = car.prices;
   const rentPrice = calcRentPrice({ priceArray, lengthRent });
   console.log(rentPrice);

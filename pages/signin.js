@@ -4,6 +4,15 @@ import Layout from '../src/components/layout/layout.comp';
 import SignInComp from '../src/components/sign-in/sing-in.comp';
 
 const SignIn = () => {
+  const createUserProfileDocument = () => {
+    fetch('/api/temp/', {
+      method: 'post',
+      body: 'hello'
+    }).then((res) => console.log(res));
+  };
+
+  createUserProfileDocument();
+
   return (
     <Layout>
       <Head>

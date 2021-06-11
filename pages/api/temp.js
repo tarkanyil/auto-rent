@@ -1,9 +1,9 @@
-import SignUp from '../../src/components/sign-up/sign-up.comp';
+import addNewUser from '../../src/utils/addNewUser';
 
 export default async (req, res) => {
 
 
-SignUp.handleSignUp();
+  await addNewUser({ uid:'uiiiidddd', email:'la@la.la', nameFirst:'Förszt', nameLast:'Laszt'});
 
-  res.send('hello');
+  res.json({ message: 'helllooooo'});
 };
