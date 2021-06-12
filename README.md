@@ -40,7 +40,7 @@ Admin users should be able to:
 
 [XiCars Car Rental Web App](https://auto-rent.vercel.app/)
 
-In this version users is be able to:
+In this version users are be able to:
 - View the optimal layout for each page depending on their device's screen size (available: home page, individual car pages)
 - Get information about individual cars (by clicking on the "Explore Now!" button in the "Our Cars" section)
 
