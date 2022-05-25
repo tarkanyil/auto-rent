@@ -4,7 +4,7 @@ import styles from './Card.module.scss';
 
 const Card = ({ cars }) => {
   return (
-    <div className={(styles.cardCont, styles.DELETETHIS)}>
+    <div className={styles.cardCont}>
       {cars.map((car, idx) => {
         return (
           <div key={idx} className={styles.card}>
